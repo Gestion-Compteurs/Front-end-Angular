@@ -13,22 +13,22 @@
   <div
     *ngIf="!haveAccount"
     class="flex flex-row items-center text-indigo-900 text-xl">
-    vous avez un compte ?
+    Vous avez un compte ?
     <button class="ml-2 bg-red-600 hover:bg-white hover:border-2 hover:border-red-600 rounded-lg"
             (click)="switchPage()"
     >
-      <p class="text-white hover:text-red-600 font-bold p-2">Authenticate</p>
+      <p class="text-white hover:text-red-600 font-bold p-2">Authenfication</p>
     </button>
   </div>
 
   <div
     *ngIf="haveAccount"
     class="flex flex-row items-center text-indigo-900 text-xl">
-    You don't have an account ?
+    Vous n'avez pas de compte ?
     <button class="ml-2 bg-red-600 hover:bg-white hover:border-2 hover:border-red-600 rounded-lg"
             (click)="switchPage()"
     >
-      <p class="text-white hover:text-red-600 font-bold p-2">Register</p>
+      <p class="text-white hover:text-red-600 font-bold p-2">S'inscrire</p>
     </button>
   </div>
 </div>

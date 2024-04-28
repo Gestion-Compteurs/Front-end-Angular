@@ -23,6 +23,8 @@ export class InscriptionComponent {
     cin: "",
     email: "",
     dateDeNaissance: new Date(),
+    civilite: "",
+    dateEmbauche: new Date(),
     password: "",
   }
   // Sa photo

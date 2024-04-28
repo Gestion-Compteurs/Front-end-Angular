@@ -4,6 +4,8 @@ interface RegisterAgentDeTerrainDto {
   cin: string,
   email: string,
   dateDeNaissance: Date,
+  civilite: string,
+  dateEmbauche: Date,
   password: string,
 }
 
