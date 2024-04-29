@@ -1,0 +1,104 @@
+<div class="mb-2">
+  <app-custom-navbar></app-custom-navbar>
+</div>
+
+<div class="flex flex-col">
+
+  <div class="bg-indigo-500 flex flex-row justify-center">
+    <p class="text-white text-4xl my-2">Détails-Modification</p>
+  </div>
+
+  <div class="flex flex-row">
+    <div class="flex flex-1 w-3/5 flex-col">
+      <form
+        (ngSubmit)="updateAgentDeTerrain()"
+        class = "flex flex-col p-3 gap-y-2"
+      >
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-user"></span>
+          <input type="text"
+                 class="border-white w-full text-md focus:outline-none"
+                 [(ngModel)]="agent$.nom"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="Nom de l'agent">
+        </div>
+
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-users"></span>
+          <input type="text"
+                 class="border-white w-full text-md focus:outline-none"
+                 [(ngModel)]="agent$.prenom"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="Prénom de l'agent">
+        </div>
+
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-id-card"></span>
+          <input type="text"
+                 class="border-white w-full text-md focus:outline-none"
+                 [(ngModel)]="agent$.cin"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="CIN de l'agent">
+        </div>
+
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-calendar"></span>
+          <input type="date"
+                 class="border-white w-full text-md focus:outline-none"
+                 [(ngModel)]="agent$.dateDeNaissance"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="Date de naissance de l'agent">
+        </div>
+
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-mars"></span>
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-venus mr-1"></span>
+          <select type="text"
+                  class="bg-white w-full text-md focus:outline-none"
+                  [(ngModel)]="agent$.civilite"
+                  [ngModelOptions]="{standalone: true}"
+          >
+            <option value="Homme">Monsieur</option>
+            <option value="Femme">Madame</option>
+            <option value="Femme">Mademoiselle</option>
+          </select>
+        </div>
+
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-calendar"></span>
+          <input type="date"
+                 class="border-white w-full text-md focus:outline-none"
+                 [(ngModel)]="agent$.dateEmbauche"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="Date d'embauche de l'agent">
+        </div>
+
+        <button
+          [routerLink]="''"
+          type="button" class="flex flex-row justify-center items-center border-2 border-red-500 bg-red-500 text-white text-3xl">
+          <span class="p-2">Quitter</span>
+          <span class="pi pi-arrow-left"></span>
+        </button>
+
+        <button
+          type="submit" class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
+          <span class="p-2">Modifier</span>
+          <span class="pi pi-arrow-right"></span>
+        </button>
+
+      </form>
+
+    </div>
+
+    <div class="h-full flex flex-col w-2/5 flex-row justify-center items-center">
+
+      <label for="photo">Selectionner une photo:</label>
+      <input type="file" id="photo" name="photo" (change)="onFileSelected($event)">
+
+      <img *ngIf="selectedFile" [src]="selectedFile"  class="p-4" alt="Photo de l'agent">
+
+    </div>
+
+  </div>
+
+</div>

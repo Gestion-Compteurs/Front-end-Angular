@@ -18,6 +18,7 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
 export class InscriptionComponent {
   // L'agent à enregistrer
   agent$ :RegisterAgentDeTerrainDto = {
+    agentId: 0,
     nom: "",
     prenom: "",
     cin: "",

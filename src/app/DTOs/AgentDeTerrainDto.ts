@@ -1,4 +1,5 @@
 interface RegisterAgentDeTerrainDto {
+  agentId: number,
   nom: string,
   prenom: string,
   cin: string,
