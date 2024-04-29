@@ -1,0 +1,5 @@
+interface ReleveDto {
+
+}
+
+export {ReleveDto}
