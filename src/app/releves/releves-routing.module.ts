@@ -10,7 +10,7 @@ const routes: Routes = [
     component:ListeRelevesComponent
   },
   {
-    path:"ajout-releve",
+    path:"ajouter-nouveau",
     component: AjoutRelevesComponent
   },
   {
