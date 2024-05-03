@@ -1,1 +1,60 @@
-<p>ajout-compteurs works!</p>
+<div class="flex flex-col">
+
+    <div class="bg-indigo-500 flex flex-row justify-center">
+      <p class="text-white text-4xl my-2">Ajouter un nouveau compteur</p>
+    </div>
+  
+    <div class="flex flex-row">
+      <div class="flex flex-1 w-3/5 flex-col">
+        <form
+          (ngSubmit)="AjouterCompteur()"
+          class = "flex flex-col p-3 gap-y-2"
+        >
+          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi "></span>
+            <input type="text"
+                   class="border-white w-full text-md focus:outline-none"
+                   [(ngModel)]="compteur$.marque"
+                   [ngModelOptions]="{standalone: true}"
+                   placeholder="marque de compteur">
+          </div>
+  
+          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi "></span>
+            <input type="text"
+                   class="border-white w-full text-md focus:outline-none"
+                   [(ngModel)]="compteur$.type"
+                   [ngModelOptions]="{standalone: true}"
+                   placeholder="type de compteur">
+          </div>
+  
+          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi "></span>
+            <input type="text"
+                   class="border-white w-full text-md focus:outline-none"
+                   [(ngModel)]="compteur$.capacite"
+                   [ngModelOptions]="{standalone: true}"
+                   placeholder="capacite">
+          </div>
+          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi"></span>
+            <input type="text"
+                   class="border-white w-full text-md focus:outline-none"
+                   [(ngModel)]="compteur$.nombreCadran"
+                   [ngModelOptions]="{standalone: true}"
+                   placeholder="nombre cadrans">
+          </div>
+          
+
+  
+          <button type="submit" class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
+            <span class="p-2">Ajouter</span>
+            <span class="pi pi-arrow-right"></span>
+          </button>
+  
+        </form>
+  
+      </div>
+    </div>
+  
+  </div>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {NgIf, NgOptimizedImage} from "@angular/common";
-import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
 import {RegisterReleveDto} from "../../DTOs/RegisterReleveDto";
 
 @Component({
@@ -41,3 +40,4 @@ export class AjoutRelevesComponent {
     }
   }
 }
+

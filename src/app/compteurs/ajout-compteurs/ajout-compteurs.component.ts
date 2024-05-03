@@ -1,12 +1,29 @@
+
+import { FormsModule } from '@angular/forms';
+import { CompteurDto } from '../../DTOs/CompteurDto';
 import { Component } from '@angular/core';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-ajout-compteurs',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule,
+    NgIf
+  ],
   templateUrl: './ajout-compteurs.component.html',
   styleUrl: './ajout-compteurs.component.css'
 })
 export class AjoutCompteursComponent {
+  compteur$ :CompteurDto = {
+    compteurId: 0,
+    marque: "",
+    type: "",
+    capacite: 0,
+    nombreCadran:0,
 
+  }
+  AjouterCompteur(): void{
+    // Fonction pour ajouter un compteur 
+  }
 }
