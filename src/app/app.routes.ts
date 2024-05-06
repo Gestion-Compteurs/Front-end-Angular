@@ -27,4 +27,9 @@ export const routes: Routes = [
     loadChildren: () => import('../app/releves/releves.module')
       .then(m=>m.RelevesModule)
   },
+  {
+    path : 'instances-compteurs',
+    loadChildren: () => import('../app/instance-compteur/instance-compteur.module')
+      .then(m=>m.InstanceCompteurModule)
+  }
 ];

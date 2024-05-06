@@ -30,13 +30,23 @@
             </thead>
             <tr *ngFor="let releve of releves, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
               <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ releve.releveId }}</td>
-              <td class="p-2 text-left ">{{ releve.agentId }}</td>
+              <td class="p-2 text-left ">
+                <a [routerLink]="['/agents/details-modification',releve.compteurId]" class="text-indigo-500 font-bold underline">
+                  {{ releve.agentId }}
+                </a>
+              </td>
               <td class="p-2 text-left">{{ releve.dateReleve }}</td>
-              <td class="p-2 text-left">{{ releve.batimentId }}</td>
-              <td class="p-2 text-left">{{ releve.compteurId }}</td>
+              <td class="p-2 text-left">
+                <a [routerLink]="['/batiments/details-modification',releve.batimentId]" class="text-indigo-500 font-bold underline">
+                  {{ releve.batimentId }}
+                </a>
+              </td>
+              <td class="p-2 text-left">
+                <a [routerLink]="['/instances-compteurs',releve.compteurId]" class="text-indigo-500 font-bold underline">
+                  {{ releve.compteurId }}
+                </a>
+              </td>
               <td>
-
-
                 <div class="flex flex-row gap-x-2">
                   <a
                     [routerLink]="['details-modification',releve.releveId]"
