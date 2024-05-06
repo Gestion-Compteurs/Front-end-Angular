@@ -27,7 +27,19 @@ export class DetailsModificationComponent implements OnInit{
     compteurId: 2,
     batimentId: 15,
     agentId: 42,
-    dateReleve: new Date()
+    dateReleve: new Date(),
+    releveCadrans: [
+      {
+        cadranId : 1,
+        instanceCadranId: 1,
+        indexRoues: 1689
+      },
+      {
+        cadranId : 2,
+        instanceCadranId: 2,
+        indexRoues: 189
+      }
+    ]
   }
   constructor(private datePipe: DatePipe) {
   }
@@ -44,5 +56,10 @@ export class DetailsModificationComponent implements OnInit{
   formatterDate(date:Date) : any {
      // Format AAAA-MM-JJ
     return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
+
+  updateReleveCadran() {
+    // Pas encore implémentée
+    console.log("Relève cadran updated")
   }
 }

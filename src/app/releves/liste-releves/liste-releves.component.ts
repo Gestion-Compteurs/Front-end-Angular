@@ -3,7 +3,7 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {RouterLink} from "@angular/router";
 import {NgForOf} from "@angular/common";
-import {RegisterReleveDto} from "../../DTOs/RegisterReleveDto";
+import {RegisterReleveDto} from "../../DTOs/ReleveDto";
 
 @Component({
   selector: 'app-liste-releves',
@@ -27,7 +27,8 @@ export class ListeRelevesComponent implements OnInit {
       compteurId: 2,
       batimentId: 15,
       agentId: 42,
-      dateReleve: new Date()
+      dateReleve: new Date(),
+      releveCadrans: []
     }
   ]
   deleteReleve(releveId: number) {}

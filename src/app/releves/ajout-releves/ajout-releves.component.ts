@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {NgIf, NgOptimizedImage} from "@angular/common";
-import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
-import {RegisterReleveDto} from "../../DTOs/RegisterReleveDto";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {RegisterReleveDto} from "../../DTOs/ReleveDto";
+import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
+import {SidenavComponent} from "../../components/sidenav/sidenav.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-ajout-releves',
@@ -10,7 +12,12 @@ import {RegisterReleveDto} from "../../DTOs/RegisterReleveDto";
   imports: [
     FormsModule,
     NgOptimizedImage,
-    NgIf],
+    NgIf,
+    CustomNavbarComponent,
+    NgForOf,
+    SidenavComponent,
+    RouterLink
+  ],
   templateUrl: './ajout-releves.component.html',
   styleUrl: './ajout-releves.component.css'
 })
@@ -22,6 +29,7 @@ export class AjoutRelevesComponent {
     batimentId: 0,
     agentId: 0,
     dateReleve: new Date(),
+    releveCadrans: []
   }
   // photo de rélève
   selectedFile: string | ArrayBuffer | null = null;

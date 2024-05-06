@@ -4,8 +4,8 @@ import {SidenavComponent} from "./components/sidenav/sidenav.component";
 export const routes: Routes = [
   {
     path : '',
-    loadChildren: () => import('../app/releves/releves.module')
-      .then(m=>m.RelevesModule)
+    loadChildren: () => import('../app/batiments/batiments-routing.module')
+      .then(m=>m.BatimentsRoutingModule)
   },
   {
     path : 'auth',
@@ -16,6 +16,11 @@ export const routes: Routes = [
     path : 'agents',
     loadChildren: () => import('../app/agents-de-terrain/agents-de-terrain.module')
       .then(m=>m.AgentsDeTerrainModule)
+  },
+  {
+    path:'batiments',
+    loadChildren: () => import('../app/batiments/batiments-routing.module')
+      .then(m=>m.BatimentsRoutingModule)
   },
   {
     path : 'compteurs',

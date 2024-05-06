@@ -1,6 +1,6 @@
 interface CompteurDto {
   compteurId: number,
-   marque: string,
+  marque: string,
   type: string,
   capacite: number;
   nombreCadran: number

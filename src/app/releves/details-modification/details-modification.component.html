@@ -75,42 +75,33 @@
             <table class="">
               <thead>
               <tr class="bg-white border-b-2">
-                <th class="p-2 text-left">ID Relève</th>
-                <th class="p-2 text-left">Agent</th>
-                <th class="p-2 text-left">Date</th>
-                <th class="p-2 text-left">Batiment</th>
-                <th class="p-2 text-left">Compteur</th>
+                <th class="p-2 text-left">ID instance</th>
+                <th class="p-2 text-left">ID cadran</th>
+                <th class="p-2 text-left">Index des roues</th>
                 <th class="p-2 text-left">Modifier</th>
               </tr>
               </thead>
-              <tr *ngFor="let cadran of releve.releveCadrans, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
-                <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ releve.releveId }}</td>
-                <td class="p-2 text-left ">
-                  <a [routerLink]="['/agents/details-modification',releve.compteurId]" class="text-indigo-500 font-bold underline">
-                    {{ releve.agentId }}
-                  </a>
-                </td>
-                <td class="p-2 text-left">{{ releve.dateReleve }}</td>
+              <tbody>
+              <tr *ngFor="let instanceCadran of releve.releveCadrans, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+                <td class="p-2 text-left">{{ instanceCadran.instanceCadranId }}</td>
+                <td class="p-2 text-left">{{ instanceCadran.cadranId }}</td>
                 <td class="p-2 text-left">
-                  <a [routerLink]="['/batiments/details-modification',releve.batimentId]" class="text-indigo-500 font-bold underline">
-                    {{ releve.batimentId }}
-                  </a>
-                </td>
-                <td class="p-2 text-left">
-                  <a [routerLink]="['/instances-compteurs',releve.compteurId]" class="text-indigo-500 font-bold underline">
-                    {{ releve.compteurId }}
-                  </a>
+                  <input type="text"
+                         class="border-white text-md focus:outline-none  p-1 rounded-lg {{i%2!=0?'bg-blue-300':'bg-white'}}"
+                         [(ngModel)]="instanceCadran.indexRoues"
+                         [ngModelOptions]="{standalone:true}"
+                  >
                 </td>
                 <td>
-                  <div class="flex flex-row gap-x-2">
+                  <div class="flex flex-row gap-x-2" (click)="updateReleveCadran()">
                     <a
-                      [routerLink]="['details-modification',releve.releveId]"
                       class="flex justify-center items-center font-bold text-xl cursor-pointer bg-indigo-500 border-indigo-500 text-white hover:bg-white hover:text-indigo-500 hover:border-white rounded-full border-2 p-1 w-12 h-12">
                       <span class="pi pi-file-edit"></span>
                     </a>
                   </div>
                 </td>
               </tr>
+              </tbody>
             </table>
           </div>
         </div>
