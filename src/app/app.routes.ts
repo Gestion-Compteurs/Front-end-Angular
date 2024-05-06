@@ -27,4 +27,9 @@ export const routes: Routes = [
     loadChildren: () => import('../app/releves/releves.module')
       .then(m=>m.RelevesModule)
   },
+  {
+    path : 'batiments',
+    loadChildren: () => import('../app/batiments/batiments.module')
+      .then(m=>m.BatimentsModule)
+  },
 ];
