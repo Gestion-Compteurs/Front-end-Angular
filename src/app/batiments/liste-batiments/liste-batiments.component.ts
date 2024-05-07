@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
-import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
+import {Component, OnInit} from '@angular/core';
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
-import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {BatimentAListerDto, BatimentDto} from "../../DTOs/BatimentDto";
-import {RouterLink} from "@angular/router";
-import {InstanceCadranDto} from "../../DTOs/InstanceCadranDto";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
+import {SidenavComponent} from "../../components/sidenav/sidenav.component";
+import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-liste-batiments',
   standalone: true,
@@ -17,13 +15,17 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     RouterLink,
     NgIf,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './liste-batiments.component.html',
   styleUrl: './liste-batiments.component.css'
 })
-export class ListeBatimentsComponent {
+export class ListeBatimentsComponent implements OnInit {
   constructor(private datePipe:DatePipe) {
+  }
+  ngOnInit() {
+    // Remplir la liste des compteurs
+
   }
   // L'identifiant du bâtiment actif
   idBatimentActif! : number
@@ -34,10 +36,14 @@ export class ListeBatimentsComponent {
     {
       batimentId : 1,
       adresse: "35, Hay El Kassimiah, Artisanal, Beni Mellal",
+      nombre_etages: 2,
+      type_batiment: "Immeuble",
     },
     {
       batimentId : 2,
       adresse: "29, Bloc E, Riad esSalam, Mohammedia",
+      nombre_etages: 3,
+      type_batiment: "Maison",
     }
   ]
   // Les bâtiments avec des détails à afficher
@@ -45,6 +51,8 @@ export class ListeBatimentsComponent {
     {
       batimentId : 1,
       adresse: "35, Hay El Kassimiah, Artisanal, Beni Mellal",
+      nombre_etages: 2,
+      type_batiment: "Immeuble",
       instanceCompteur : [
         {
           instanceCompteurId : 1,
@@ -87,6 +95,8 @@ export class ListeBatimentsComponent {
     {
       batimentId : 2,
       adresse: "29, Bloc E, Riad esSalam, Mohammedia",
+      nombre_etages: 2,
+      type_batiment: "Maison",
       instanceCompteur : [
         {
           instanceCompteurId : 1,
@@ -134,6 +144,11 @@ export class ListeBatimentsComponent {
   formatterDate(date:Date) : any {
     // Format AAAA-MM-JJ
     return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
+
+  // Supprimer un bâtiment
+  deleteBatiment(batimentId:number){
+
   }
 
 }

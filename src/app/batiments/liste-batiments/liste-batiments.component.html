@@ -9,12 +9,15 @@
   <div class="w-4/5">
     <div class="mx-8 my-2">
       <div class="bg-indigo-500 flex flex-row justify-between">
-        <p class="text-white text-4xl my-2">Liste des bâtiments</p>
+
+        <p class="text-white text-4xl my-2">Gestion des batiments</p>
+
         <a class="flex flex-row items-center justify-center text-xl text-indigo-500 bg-white rounded-md m-2 p-1" [routerLink]="'ajouter-nouveau'">
           <span class="pi pi-plus mr-1"></span>
           Ajouter nouveau
         </a>
       </div>
+
       <div class="bg-white flex flex-row ">
 
         <div class="flex overflow-auto flex-col md:flex w-1/2">
@@ -23,6 +26,8 @@
             <tr class="bg-white border-b-2">
               <th class="p-2 text-left">ID Bâtiment</th>
               <th class="p-2 text-left">Adresse</th>
+              <th class="p-2 text-left">Nombre étages</th>
+              <th class="p-2 text-left">Type batiment</th>
               <th class="p-2 text-left">Détails</th>
             </tr>
             </thead>
@@ -30,6 +35,8 @@
               <tr *ngFor="let batiment of batiments, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ batiment.batimentId }}</td>
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ batiment.adresse }}</td>
+                <td class="p-2 text-left">{{ batiment.nombre_etages}}</td>
+                <td class="p-2 text-left">{{ batiment.type_batiment }}</td>
                 <td class="p-2 text-left">
                   <div
                     (click)="voirDetailsBatiment(batiment.batimentId)"
@@ -123,4 +130,3 @@
     </div>
   </div>
 </div>
-

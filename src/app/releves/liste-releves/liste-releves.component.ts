@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+
+import { RouterLink } from "@angular/router";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
-import {RouterLink} from "@angular/router";
-import {NgForOf} from "@angular/common";
-import {RegisterReleveDto} from "../../DTOs/ReleveDto";
+import { RegisterReleveDto } from "../../DTOs/ReleveDto";
+import { NgForOf } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: 'app-liste-releves',

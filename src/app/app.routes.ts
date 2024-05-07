@@ -36,5 +36,10 @@ export const routes: Routes = [
     path : 'instances-compteurs',
     loadChildren: () => import('../app/instance-compteur/instance-compteur.module')
       .then(m=>m.InstanceCompteurModule)
-  }
+  },
+  {
+    path : 'batiments',
+    loadChildren: () => import('../app/batiments/batiments.module')
+      .then(m=>m.BatimentsModule)
+  },
 ];

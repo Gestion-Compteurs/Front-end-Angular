@@ -48,6 +48,8 @@ export class ListeCompteursComponent {
       nombreCadran: 22,
     }
   ]
-
+  deleteCompteur(compteurId:number){
+    
+  }
 
 }

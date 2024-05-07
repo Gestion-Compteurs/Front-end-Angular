@@ -6,6 +6,7 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {RouterLink} from "@angular/router";
 
+
 @Component({
   selector: 'app-ajout-releves',
   standalone: true,
@@ -49,3 +50,4 @@ export class AjoutRelevesComponent {
     }
   }
 }
+

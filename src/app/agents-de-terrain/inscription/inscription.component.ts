@@ -3,15 +3,17 @@ import {FormsModule} from "@angular/forms";
 import {Observable} from "rxjs";
 import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
 import {NgIf, NgOptimizedImage} from "@angular/common";
+import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 
 @Component({
   selector: 'app-inscription',
   standalone: true,
-  imports: [
-    FormsModule,
-    NgOptimizedImage,
-    NgIf
-  ],
+    imports: [
+        FormsModule,
+        NgOptimizedImage,
+        NgIf,
+        CustomNavbarComponent
+    ],
   templateUrl: './inscription.component.html',
   styleUrl: './inscription.component.css'
 })
