@@ -4,7 +4,7 @@ import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {RegisterReleveDto} from "../../DTOs/ReleveDto";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 
 
 @Component({
@@ -23,11 +23,21 @@ import {RouterLink} from "@angular/router";
   styleUrl: './ajout-releves.component.css'
 })
 export class AjoutRelevesComponent {
+  // L'identifiant de l'instance du compteur
+  instanceCompteurId! : number
+  constructor(
+    private router:Router,
+    private route:ActivatedRoute
+  ) {
+    // L'identifiant de l'instance compteur
+    this.instanceCompteurId = this.route.snapshot.params['instanceCompteurId']
+  }
   // La rélève à enregistrer
   releve$ :RegisterReleveDto = {
     releveId: 0,
     compteurId: 0,
     batimentId: 0,
+    instanceCompteurId: 1,
     agentId: 0,
     dateReleve: new Date(),
     releveCadrans: []

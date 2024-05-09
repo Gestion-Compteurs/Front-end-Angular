@@ -21,16 +21,19 @@ import { RouterLink } from '@angular/router';
   styleUrl: './liste-batiments.component.css'
 })
 export class ListeBatimentsComponent implements OnInit {
-  constructor(private datePipe:DatePipe) {
+  // L'identifiant du bâtiment actif
+  idBatimentActif! : number
+  // Le bâtiment actif
+  batimentActif! : BatimentDto
+  constructor(
+    private datePipe:DatePipe
+  ) {
+    // Utilisation des services
   }
   ngOnInit() {
     // Remplir la liste des compteurs
 
   }
-  // L'identifiant du bâtiment actif
-  idBatimentActif! : number
-  // Le bâtiment actif
-  batimentActif! : BatimentDto
   // Les bâtiments à ajouter
   batiments: BatimentAListerDto[] = [
     {

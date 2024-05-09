@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 
 @Component({
@@ -19,6 +19,14 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
   styleUrl: './details-modification.component.css'
 })
 export class DetailsModificationComponent implements OnInit{
+  // L'identifiant de l'agent concerné
+  agentId! : number
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    // Retrouver l'identifiant depuis la route
+    this.agentId = this.route.snapshot.params['agentId']
+  }
   ngOnInit(): void {
     // Retrouver l'agent en question
 

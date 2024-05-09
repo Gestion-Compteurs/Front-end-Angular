@@ -1,18 +1,20 @@
-import {InstanceCadranDto} from "./InstanceCadranDto";
+import {ReleveCadranDto} from "./ReleveCadranDto";
 
 interface ReleveDto {
   releveId: number,
   compteurId: number,
   batimentId: number,
+  instanceCompteurId: number,
   agentId: number,
   dateReleve: Date,
-  releveCadrans: InstanceCadranDto[]
+  releveCadrans: ReleveCadranDto[]
 }
 
 interface RegisterReleveDto {
   releveId: number,
   compteurId: number,
   batimentId: number,
+  instanceCompteurId: number,
   agentId: number,
   dateReleve: Date,
   releveCadrans: []

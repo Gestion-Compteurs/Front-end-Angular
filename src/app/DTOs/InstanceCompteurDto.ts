@@ -1,11 +1,11 @@
-import {InstanceCadranDto} from "./InstanceCadranDto";
+import {ReleveCadranDto} from "./ReleveCadranDto";
 
 interface InstanceCompteurDto {
   instanceCompteurId : number,
   batimentId : number,
   compteurId: number,
   dateInstallation : Date,
-  cadrans : InstanceCadranDto[]
+  cadrans : ReleveCadranDto[]
 }
 
 export {

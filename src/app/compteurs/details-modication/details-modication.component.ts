@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompteurDto } from '../../DTOs/CompteurDto';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 
 @Component({
@@ -19,8 +19,16 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
   styleUrl: './details-modication.component.css'
 })
 export class DetailsModicationComponent implements OnInit{
+  // L'identifiant du compteur concerné
+  compteurId! : number
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    // Retrouver l'identifiant depuis la route
+    this.compteurId = this.route.snapshot.params['compteurId']
+  }
   ngOnInit(): void {
-    
+
 
   }
   // le compteur à modifier

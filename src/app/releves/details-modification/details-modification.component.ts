@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {ReleveDto} from "../../DTOs/ReleveDto";
 import {FormsModule} from "@angular/forms";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
@@ -21,11 +21,25 @@ import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
   styleUrl: './details-modification.component.css'
 })
 export class DetailsModificationComponent implements OnInit{
+  // L'identifiant de la relève à modifier
+  releveId! : number
+  constructor(
+    private router:Router,
+    private route:ActivatedRoute,
+    private datePipe: DatePipe
+  ) {
+    // L'identifiant de l'instance compteur
+    this.releveId = this.route.snapshot.params['releveId']
+  }
+  ngOnInit(): void {
+    // Retrouver la relève
+  }
   // La relève
   releve:ReleveDto = {
     releveId: 1,
     compteurId: 2,
     batimentId: 15,
+    instanceCompteurId: 1,
     agentId: 42,
     dateReleve: new Date(),
     releveCadrans: [
@@ -40,12 +54,6 @@ export class DetailsModificationComponent implements OnInit{
         indexRoues: 189
       }
     ]
-  }
-  constructor(private datePipe: DatePipe) {
-  }
-  ngOnInit(): void {
-    // Retrouver la relève
-
   }
 
   updateReleve() {
