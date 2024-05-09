@@ -24,6 +24,7 @@
               <th class="p-2 text-left">Photo</th>
               <th class="p-2 text-left">Prénom</th>
               <th class="p-2 text-left">Nom</th>
+              <th class="p-2 text-left">E-Mail</th>
               <th class="p-2 text-left">Actions</th>
             </tr>
             </thead>
@@ -34,6 +35,13 @@
               </td>
               <td class="p-2 text-left ">{{ agent.prenom }}</td>
               <td class="p-2 text-left">{{ agent.nom }}</td>
+              <td class="p-2 text-left">
+                <a
+                  class="text-blue-400 underline"
+                  href="mailto:{{agent.email}}">
+                  {{ agent.email }} <span class="pi pi-link"></span>
+                </a>
+              </td>
               <td>
 
 

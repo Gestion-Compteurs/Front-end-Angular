@@ -35,6 +35,17 @@ export class ListeAgentsDeTerrainComponent implements OnInit{
       civilite: "Monsieur",
       dateEmbauche: new Date("16-01-1996"),
       password: "",
+    },
+    {
+      agentId: 1,
+      nom: "houssein",
+      prenom: "mamane",
+      cin: "ER567ERS2",
+      email: "hous.mamane012@gmail.com",
+      dateDeNaissance: new Date("15-01-1996"),
+      civilite: "Monsieur",
+      dateEmbauche: new Date("16-01-1996"),
+      password: "",
     }
   ]
 
