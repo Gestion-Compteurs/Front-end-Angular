@@ -64,7 +64,7 @@ export class ListeBatimentsComponent implements OnInit {
           batimentId : 1,
           compteurId: 1,
           dateInstallation : new Date(),
-          cadrans : [
+          relevesCadrans : [
             {
               instanceCadranId : 1,
               cadranId: 2,
@@ -82,7 +82,7 @@ export class ListeBatimentsComponent implements OnInit {
           batimentId : 1,
           compteurId: 1,
           dateInstallation : new Date(),
-          cadrans : [
+          relevesCadrans : [
             {
               instanceCadranId : 1,
               cadranId: 2,
@@ -108,7 +108,7 @@ export class ListeBatimentsComponent implements OnInit {
           batimentId : 1,
           compteurId: 1,
           dateInstallation : new Date(),
-          cadrans : [
+          relevesCadrans : [
             {
               instanceCadranId : 1,
               cadranId: 2,

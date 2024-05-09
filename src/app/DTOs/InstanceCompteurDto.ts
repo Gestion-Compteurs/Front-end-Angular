@@ -5,7 +5,7 @@ interface InstanceCompteurDto {
   batimentId : number,
   compteurId: number,
   dateInstallation : Date,
-  cadrans : ReleveCadranDto[]
+  relevesCadrans : ReleveCadranDto[]
 }
 
 export {
