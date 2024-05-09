@@ -5,7 +5,11 @@
 <div class="flex flex-col">
 
     <div class="bg-indigo-500 flex flex-row justify-center">
-      <p class="text-white text-4xl my-2">Ajouter une relève</p>
+      <p class="text-white text-4xl my-2">Ajouter une relève pour
+        <a class="text-2xl ml-4 p-1 text-indigo-500 bg-white rounded-md" [routerLink]="['../../', this.instanceCompteurId]">
+          Voir l'instance compteur
+        </a>
+      </p>
     </div>
 
     <div class="flex flex-row">

@@ -30,6 +30,7 @@ export class DetailsModificationComponent implements OnInit{
   ) {
     // L'identifiant de l'instance compteur
     this.releveId = this.route.snapshot.params['releveId']
+    console.log("L'identifiant de la relève à modifier : " + this.releveId)
   }
   ngOnInit(): void {
     // Retrouver la relève

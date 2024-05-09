@@ -1,6 +1,10 @@
 <app-custom-navbar></app-custom-navbar>
 <div class="mt-1 bg-indigo-500 flex flex-row justify-center items-center">
-  <p class="text-white text-4xl my-2">Détail relève : Numéro - {{ releve.releveId}}</p>
+  <p class="text-white text-4xl my-2">Détail relève : {{ releve.releveId}}
+    <a class="text-2xl ml-4 p-1 text-indigo-500 bg-white rounded-md" [routerLink]="['../../', releve.instanceCompteurId]">
+      Voir l'instance compteur
+    </a>
+  </p>
 </div>
   <div class="flex flex-row">
     <div class="flex flex-1 w-3/5 flex-col">
@@ -19,7 +23,7 @@
         </div>
 
         <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-          <span class="p-1 text-indigo-500 w-auto mr-2 text-xl font-bold">Numéro compteur</span>
+          <span class="p-1 text-indigo-500 w-auto mr-2 text-xl font-bold">Numéro relève</span>
           <input type="text"
                  class="border-white text-md focus:outline-none"
                  [(ngModel)]="releve.compteurId"

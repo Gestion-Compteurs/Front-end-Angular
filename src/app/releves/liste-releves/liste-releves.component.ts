@@ -5,6 +5,7 @@ import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import { RegisterReleveDto } from "../../DTOs/ReleveDto";
 import {DatePipe, NgForOf} from "@angular/common";
 import { Component, OnInit } from "@angular/core";
+import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
 
 @Component({
   selector: 'app-liste-releves',
@@ -13,7 +14,8 @@ import { Component, OnInit } from "@angular/core";
     CustomNavbarComponent,
     SidenavComponent,
     RouterLink,
-    NgForOf
+    NgForOf,
+    FormatterDatePipe
   ],
   templateUrl: './liste-releves.component.html',
   styleUrl: './liste-releves.component.css'
@@ -27,9 +29,11 @@ export class ListeRelevesComponent implements OnInit {
     private datePipe: DatePipe
   ) {
     // L'identifiant de l'instance compteur
-    this.instanceCompteurId = this.route.snapshot.params['instanceCompteurId']
+    this.instanceCompteurId = this.route.snapshot.params['idInstanceCompteur']
+    console.log("L'identifiant de l'instance compteur à modifier " + this.instanceCompteurId)
   }
   ngOnInit() {
+    // Retrouver la relève depuis l'API
 
   }
   releves:RegisterReleveDto[] = [

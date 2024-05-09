@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import { RouterLink } from '@angular/router';
+import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
 @Component({
   selector: 'app-liste-batiments',
   standalone: true,
@@ -16,6 +17,7 @@ import { RouterLink } from '@angular/router';
     NgIf,
     ReactiveFormsModule,
     FormsModule,
+    FormatterDatePipe,
   ],
   templateUrl: './liste-batiments.component.html',
   styleUrl: './liste-batiments.component.css'
@@ -141,12 +143,6 @@ export class ListeBatimentsComponent implements OnInit {
 
   updateAdresseBatiment(batimentId: number) {
 
-  }
-
-  // Formattage de date
-  formatterDate(date:Date) : any {
-    // Format AAAA-MM-JJ
-    return this.datePipe.transform(date, 'yyyy-MM-dd');
   }
 
   // Supprimer un bâtiment

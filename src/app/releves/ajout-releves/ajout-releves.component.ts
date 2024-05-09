@@ -30,7 +30,8 @@ export class AjoutRelevesComponent {
     private route:ActivatedRoute
   ) {
     // L'identifiant de l'instance compteur
-    this.instanceCompteurId = this.route.snapshot.params['instanceCompteurId']
+    this.instanceCompteurId = this.route.snapshot.params['idInstanceCompteur']
+    console.log("L'identifiant de l'instance compteur qui recevra une nouvelle relève est "+ this.instanceCompteurId)
   }
   // La rélève à enregistrer
   releve$ :RegisterReleveDto = {

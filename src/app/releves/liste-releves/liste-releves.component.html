@@ -9,8 +9,8 @@
   <div class="w-4/5">
     <div class="mx-8 my-2">
       <div class="bg-indigo-500 flex flex-row justify-between">
-        <p class="text-white text-4xl my-2">Liste des relèves</p>
-        <a class="flex flex-row items-center justify-center text-xl text-indigo-500 bg-white rounded-md m-2 p-1" [routerLink]="'ajouter-nouveau'">
+        <p class="text-white text-4xl my-2">Liste des relèves : instance compteur n° {{ this.instanceCompteurId }}</p>
+        <a class="flex flex-row items-center justify-center text-xl text-indigo-500 bg-white rounded-md m-2 p-1" [routerLink]="['../ajouter-nouveau',this.instanceCompteurId]">
           <span class="pi pi-plus mr-1"></span>
           Ajouter nouveau
         </a>
@@ -24,7 +24,7 @@
               <th class="p-2 text-left">Agent</th>
               <th class="p-2 text-left">Date</th>
               <th class="p-2 text-left">Batiment</th>
-              <th class="p-2 text-left">Compteur</th>
+              <th class="p-2 text-left">Type compteur</th>
               <th class="p-2 text-left">Modifier</th>
             </tr>
             </thead>
@@ -35,21 +35,21 @@
                   {{ releve.agentId }}
                 </a>
               </td>
-              <td class="p-2 text-left">{{ releve.dateReleve }}</td>
+              <td class="p-2 text-left">{{ releve.dateReleve | formatterDate }}</td>
               <td class="p-2 text-left">
                 <a [routerLink]="['/batiments/details-modification',releve.batimentId]" class="text-indigo-500 font-bold underline">
                   {{ releve.batimentId }}
                 </a>
               </td>
               <td class="p-2 text-left">
-                <a [routerLink]="['/instances-compteurs',releve.compteurId]" class="text-indigo-500 font-bold underline">
+                <a [routerLink]="['/compteurs/details-modification',releve.compteurId]" class="text-indigo-500 font-bold underline">
                   {{ releve.compteurId }}
                 </a>
               </td>
               <td>
                 <div class="flex flex-row gap-x-2">
                   <a
-                    [routerLink]="['details-modification',releve.releveId]"
+                    [routerLink]="['../details-modification',releve.releveId]"
                     class="flex justify-center items-center font-bold text-xl cursor-pointer bg-indigo-500 border-indigo-500 text-white hover:bg-white hover:text-indigo-500 hover:border-white rounded-full border-2 p-1 w-12 h-12">
                     <span class="pi pi-file-edit"></span>
                   </a>
