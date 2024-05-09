@@ -59,6 +59,7 @@ export class ListeBatimentsComponent implements OnInit {
           batimentId : 1,
           compteurId: 1,
           dateInstallation : new Date(),
+         
           cadrans : [
             {
               instanceCadranId : 1,
@@ -149,6 +150,10 @@ export class ListeBatimentsComponent implements OnInit {
   // Supprimer un bâtiment
   deleteBatiment(batimentId:number){
 
+  }
+  
+  voirDetailsReleve(instanceCompteurId:number){
+    
   }
 
 }

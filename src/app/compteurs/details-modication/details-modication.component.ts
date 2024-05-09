@@ -28,8 +28,8 @@ export class DetailsModicationComponent implements OnInit{
     compteurId: 0,
     marque: "",
     type: "",
-    capacite: 0,
-    nombreCadran: 0,
+    capacite: null,
+    nombreCadran: null,
   }
   updateCompteur(): void{
     // Fonction pour modifier un compteur

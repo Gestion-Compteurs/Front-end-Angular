@@ -2,8 +2,8 @@ interface CompteurDto {
   compteurId: number,
   marque: string,
   type: string,
-  capacite: number;
-  nombreCadran: number
+  capacite: number|null,
+  nombreCadran: number|null,
 }
 
 export {

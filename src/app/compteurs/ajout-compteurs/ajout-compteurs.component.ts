@@ -21,8 +21,8 @@ export class AjoutCompteursComponent {
     compteurId: 0,
     marque: "",
     type: "",
-    capacite: 0,
-    nombreCadran:0,
+    capacite: null,
+    nombreCadran:null,
 
   }
   AjouterCompteur(): void{

@@ -26,9 +26,9 @@ export class AjoutRelevesComponent {
   // La rélève à enregistrer
   releve$ :RegisterReleveDto = {
     releveId: 0,
-    compteurId: 0,
-    batimentId: 0,
-    agentId: 0,
+    compteurId: null,
+    batimentId: null,
+    agentId: null,
     dateReleve: new Date(),
     releveCadrans: []
   }

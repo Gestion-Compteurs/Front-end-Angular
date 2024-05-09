@@ -1,7 +1,7 @@
 interface BatimentsDto {
   batimentId: number,
   adresse:string,
-  nombre_etages:number,
+  nombre_etages:number|null,
   type_batiment:string,
 }
 
