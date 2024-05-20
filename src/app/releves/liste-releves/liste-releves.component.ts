@@ -6,6 +6,7 @@ import { RegisterReleveDto } from "../../DTOs/ReleveDto";
 import {DatePipe, NgForOf} from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
+import {RelevesService} from "../../services/releves/releves.service";
 
 @Component({
   selector: 'app-liste-releves',
@@ -24,9 +25,8 @@ export class ListeRelevesComponent implements OnInit {
   // L'identifiant de l'instance du compteur
   instanceCompteurId! : number
   constructor(
-    private router:Router,
     private route:ActivatedRoute,
-    private datePipe: DatePipe
+    private _service: RelevesService
   ) {
     // L'identifiant de l'instance compteur
     this.instanceCompteurId = this.route.snapshot.params['idInstanceCompteur']
@@ -45,5 +45,7 @@ export class ListeRelevesComponent implements OnInit {
       releveCadrans: []
     }
   ]
-  deleteReleve(releveId: number) {}
+  deleteReleve(releveId: number) {
+    // Fonction pour supprimer une relève
+  }
 }

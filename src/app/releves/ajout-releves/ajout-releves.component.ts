@@ -5,6 +5,7 @@ import {RegisterReleveDto} from "../../DTOs/ReleveDto";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {RelevesService} from "../../services/releves/releves.service";
 
 
 @Component({
@@ -27,7 +28,8 @@ export class AjoutRelevesComponent {
   instanceCompteurId! : number
   constructor(
     private router:Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private _service: RelevesService
   ) {
     // L'identifiant de l'instance compteur
     this.instanceCompteurId = this.route.snapshot.params['idInstanceCompteur']

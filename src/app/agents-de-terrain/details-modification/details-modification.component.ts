@@ -26,10 +26,7 @@ export class DetailsModificationComponent implements OnInit{
   ) {
     // Retrouver l'identifiant depuis la route
     this.agentId = this.route.snapshot.params['agentId']
-  }
-  ngOnInit(): void {
     // Retrouver l'agent en question
-
   }
   // L'agent à modifier
   agent$ :RegisterAgentDeTerrainDto = {
