@@ -18,7 +18,7 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
   templateUrl: './details-modification.component.html',
   styleUrl: './details-modification.component.css'
 })
-export class DetailsModificationComponent implements OnInit{
+export class DetailsModificationComponent{
   // L'identifiant de l'agent concerné
   agentId! : number
   constructor(
