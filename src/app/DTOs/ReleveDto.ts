@@ -2,8 +2,6 @@ import {ReleveCadranDto} from "./ReleveCadranDto";
 
 interface ReleveDto {
   releveId: number,
-  compteurId: number,
-  batimentId: number,
   instanceCompteurId: number,
   agentId: number,
   dateReleve: Date,
@@ -12,8 +10,6 @@ interface ReleveDto {
 
 interface RegisterReleveDto {
   releveId: number,
-  compteurId: number,
-  batimentId: number,
   instanceCompteurId: number,
   agentId: number,
   dateReleve: Date,

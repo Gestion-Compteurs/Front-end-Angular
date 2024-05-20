@@ -11,10 +11,16 @@ interface BatimentDto {
   adresse : string,
   nombreEtages:number,
   typeBatiment:string,
-  instanceCompteur : InstanceCompteurDto[]
+  instanceCompteursDtos : InstanceCompteurDto[]
 }
 
+interface AjoutBatimentDto {
+  adresse: string,
+  nombreEtages: number,
+  typeBatiment: string,
+}
 export {
   BatimentAListerDto,
-  BatimentDto
+  BatimentDto,
+  AjoutBatimentDto
 }

@@ -5,6 +5,7 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
 import {NgForOf} from "@angular/common";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {RouterLink} from "@angular/router";
+import {CompteursService} from "../../services/compteurs/compteurs.service";
 
 @Component({
   selector: 'app-liste-compteurs',
@@ -19,9 +20,10 @@ import {RouterLink} from "@angular/router";
   styleUrl: './liste-compteurs.component.css'
 })
 export class ListeCompteursComponent {
-  ngOnInit() {
-    // Remplir la liste des compteurs
-
+  constructor(
+    private _service: CompteursService
+  ) {
+    // Remplir la liste des compteurs, créer une fonction listerCompteurs() dans le service
   }
 
   // La liste des compteurs à afficher
@@ -29,27 +31,27 @@ export class ListeCompteursComponent {
     {
       compteurId : 0,
       marque: "Ingelec",
-      type : "type1",
-      capacite: 15,
+      modele : "type1",
+      voltageMax: 15,
       nombreCadran: 8,
     },
     {
       compteurId : 1,
       marque: "Montelec",
-      type : "type2",
-      capacite: 20,
+      modele : "type2",
+      voltageMax: 20,
       nombreCadran: 12,
     },
     {
       compteurId : 3,
       marque: "Montelec",
-      type : "type3",
-      capacite: 25,
+      modele : "type3",
+      voltageMax: 25,
       nombreCadran: 22,
     }
   ]
   deleteCompteur(compteurId:number){
-    
+
   }
 
 }

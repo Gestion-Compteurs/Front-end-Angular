@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
 import {BatimentsService} from "../../services/batiments/batiments.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {BatimentsDto} from "../../DTOs/BatimentsDto";
 @Component({
   selector: 'app-liste-batiments',
   standalone: true,
@@ -28,7 +29,7 @@ export class ListeBatimentsComponent implements OnInit {
   // L'identifiant du bâtiment actif
   idBatimentActif! : number
   // Le bâtiment actif
-  batimentActif! : BatimentDto
+  batimentActif! : BatimentsDto
   constructor(
     private datePipe:DatePipe,
     private _service: BatimentsService
@@ -40,106 +41,38 @@ export class ListeBatimentsComponent implements OnInit {
     this._service.listerBatiments().subscribe({
       next : (result) => {
         this.batiments = result
-        console.log(this.batiments)
       },
       error : error => {
-
+        console.log(error)
       }
     })
   }
   // Les bâtiments à ajouter
   batiments!: BatimentAListerDto[]
-  // Les bâtiments avec des détails à afficher
-  batimentsDetailles: BatimentDto[] = [
-    {
-      batimentId : 1,
-      adresse: "35, Hay El Kassimiah, Artisanal, Beni Mellal",
-      nombreEtages: 2,
-      typeBatiment: "Immeuble",
-      instanceCompteur : [
-        {
-          instanceCompteurId : 1,
-          batimentId : 1,
-          compteurId: 1,
-          dateInstallation : new Date(),
-          relevesCadrans : [
-            {
-              instanceCadranId : 1,
-              cadranId: 2,
-              indexRoues: 1234
-            },
-            {
-              instanceCadranId : 2,
-              cadranId: 3,
-              indexRoues: 1034
-            },
-          ]
-        },
-        {
-          instanceCompteurId : 1,
-          batimentId : 1,
-          compteurId: 1,
-          dateInstallation : new Date(),
-          relevesCadrans : [
-            {
-              instanceCadranId : 1,
-              cadranId: 2,
-              indexRoues: 1234
-            },
-            {
-              instanceCadranId : 2,
-              cadranId: 3,
-              indexRoues: 1034
-            },
-          ]
-        }
-      ]
-    },
-    {
-      batimentId : 2,
-      adresse: "29, Bloc E, Riad esSalam, Mohammedia",
-      nombreEtages: 2,
-      typeBatiment: "Maison",
-      instanceCompteur : [
-        {
-          instanceCompteurId : 1,
-          batimentId : 1,
-          compteurId: 1,
-          dateInstallation : new Date(),
-          relevesCadrans : [
-            {
-              instanceCadranId : 1,
-              cadranId: 2,
-              indexRoues: 1234
-            },
-            {
-              instanceCadranId : 2,
-              cadranId: 3,
-              indexRoues: 1034
-            },
-          ]
-        },
-      ]
-    }
-  ]
+
   // Activer un bâtiment pour voir ces détails
   voirDetailsBatiment(batimentId: number) {
-    // Le mettre au bâtiment actif
-    this.idBatimentActif = batimentId
     // Chercher les détails depuis la base de données et remplir
-    // Pour l'instant on fait une fonction rapide pour les données en dur
-    for(let batiment of this.batimentsDetailles){
-      if(batiment.batimentId==batimentId){
-        this.batimentActif = batiment
+    this._service.retrouverBatimentsEtInstancesCompteurs(batimentId).subscribe({
+      next : value => {
+        console.log(value)
+        // Le mettre au bâtiment actif
+        this.batimentActif = value
+        this.idBatimentActif = batimentId
+        console.log(this.batimentActif)
+      },
+      error: error => {
+        console.log(error)
       }
-    }
+    })
   }
   // Connaître le bâtiment actif
   batimentEstActif(batimentId : number) : boolean {
     return batimentId == this.idBatimentActif
   }
 
-  updateAdresseBatiment(batimentId: number) {
+  updateBatiment(batimentId: number) {
+    // C'est batimentActif qu'il faut envoyer dans le corps de la requête
 
   }
 

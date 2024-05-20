@@ -1,7 +1,8 @@
 interface ReleveCadranDto {
+  releveCadranId: number,
   instanceCadranId : number,
-  cadranId: number,
-  indexRoues: number
+  prixWatt: number,
+  indexRoues: number,
 }
 
 export {

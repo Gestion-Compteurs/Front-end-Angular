@@ -95,7 +95,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let instanceCompteur of batimentActif.instanceCompteur, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+              <tr *ngFor="let instanceCompteur of batimentActif.instanceCompteursDtos, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ instanceCompteur.instanceCompteurId }}</td>
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">
                   <a

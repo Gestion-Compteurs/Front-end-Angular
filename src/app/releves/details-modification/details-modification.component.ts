@@ -38,21 +38,21 @@ export class DetailsModificationComponent implements OnInit{
   // La relève
   releve:ReleveDto = {
     releveId: 1,
-    compteurId: 2,
-    batimentId: 15,
     instanceCompteurId: 1,
     agentId: 42,
     dateReleve: new Date(),
     releveCadrans: [
       {
-        cadranId : 1,
+        releveCadranId : 1,
         instanceCadranId: 1,
-        indexRoues: 1689
+        indexRoues: 1689,
+        prixWatt: 200
       },
       {
-        cadranId : 2,
+        releveCadranId : 2,
         instanceCadranId: 2,
-        indexRoues: 189
+        indexRoues: 189,
+        prixWatt: 234
       }
     ]
   }

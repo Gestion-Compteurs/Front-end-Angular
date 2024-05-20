@@ -4,6 +4,7 @@ import { CompteurDto } from '../../DTOs/CompteurDto';
 import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
+import {CompteursService} from "../../services/compteurs/compteurs.service";
 
 @Component({
   selector: 'app-ajout-compteurs',
@@ -20,11 +21,15 @@ export class AjoutCompteursComponent {
   compteur$ :CompteurDto = {
     compteurId: 0,
     marque: "",
-    type: "",
-    capacite: 0,
+    modele: "",
+    voltageMax: 0,
     nombreCadran:0,
-
   }
+  constructor(
+    private _service: CompteursService
+  ) {
+  }
+
   AjouterCompteur(): void{
     // Fonction pour ajouter un compteur
   }

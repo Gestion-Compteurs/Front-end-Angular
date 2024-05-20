@@ -39,8 +39,6 @@ export class ListeRelevesComponent implements OnInit {
   releves:RegisterReleveDto[] = [
     {
       releveId: 1,
-      compteurId: 2,
-      batimentId: 15,
       instanceCompteurId: 1,
       agentId: 42,
       dateReleve: new Date(),

@@ -26,8 +26,6 @@
           <span class="p-1 text-indigo-500 w-auto mr-2 text-xl font-bold">Numéro relève</span>
           <input type="text"
                  class="border-white text-md focus:outline-none"
-                 [(ngModel)]="releve.compteurId"
-                 [ngModelOptions]="{standalone: true}"
                  placeholder="Numéro compteur">
         </div>
 
@@ -65,8 +63,6 @@
           <span class="p-1 text-indigo-500 w-auto mr-2 text-xl font-bold">Numéro du bâtiment</span>
           <input type="text"
                  class="border-white text-md focus:outline-none"
-                 [(ngModel)]="releve.batimentId"
-                 [ngModelOptions]="{standalone: true}"
                  placeholder="Numéro du bâtiment">
         </div>
 
@@ -79,16 +75,18 @@
             <table class="">
               <thead>
               <tr class="bg-white border-b-2">
-                <th class="p-2 text-left">ID instance</th>
-                <th class="p-2 text-left">ID cadran</th>
-                <th class="p-2 text-left">Index des roues</th>
+                <th class="p-2 text-left">ID Relève</th>
+                <th class="p-2 text-left">ID instance cadran</th>
+                <th class="p-2 text-left">Prix watt</th>
+                <th class="p-2 text-left">Index roues</th>
                 <th class="p-2 text-left">Modifier</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let instanceCadran of releve.releveCadrans, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+                <td class="p-2 text-left">{{ instanceCadran.releveCadranId }}</td>
                 <td class="p-2 text-left">{{ instanceCadran.instanceCadranId }}</td>
-                <td class="p-2 text-left">{{ instanceCadran.cadranId }}</td>
+                <td class="p-2 text-left">{{ instanceCadran.prixWatt }}</td>
                 <td class="p-2 text-left">
                   <input type="text"
                          class="border-white text-md focus:outline-none  p-1 rounded-lg {{i%2!=0?'bg-blue-300':'bg-white'}}"

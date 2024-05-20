@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
+import {CompteursService} from "../../services/compteurs/compteurs.service";
 
 @Component({
   selector: 'app-details-modication',
@@ -22,21 +23,22 @@ export class DetailsModicationComponent implements OnInit{
   // L'identifiant du compteur concerné
   compteurId! : number
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _service: CompteursService
   ) {
     // Retrouver l'identifiant depuis la route
     this.compteurId = this.route.snapshot.params['compteurId']
+    // Ici, il faut remplacer compteur$ par le compteur retrouvé depuis l'api
+    // this._service.retrouverCompteur().subscribe({...})
   }
   ngOnInit(): void {
-
-
   }
-  // le compteur à modifier
+  // Le compteur dont on va voir ses détails et qui sera modifié
   compteur$ :CompteurDto = {
     compteurId: 0,
     marque: "",
-    type: "",
-    capacite: 0,
+    modele: "",
+    voltageMax: 0,
     nombreCadran: 0,
   }
   updateCompteur(): void{
