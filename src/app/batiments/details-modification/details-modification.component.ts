@@ -26,8 +26,8 @@ export class DetailsModificationComponent implements OnInit{
     batiment$ :BatimentsDto = {
       batimentId: 0,
       adresse: "",
-      nombre_etages: 0,
-      type_batiment: "",
+      nombreEtages: 0,
+      typeBatiment: "",
 
     }
     updateBatiment(): void{

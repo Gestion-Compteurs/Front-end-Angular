@@ -19,8 +19,8 @@ export class AjoutBatimentComponent {
   batiments$ :BatimentsDto = {
     batimentId: 0,
     adresse: "",
-    nombre_etages: 0,
-    type_batiment: "",
+    nombreEtages: 0,
+    typeBatiment: "",
 
 
   }

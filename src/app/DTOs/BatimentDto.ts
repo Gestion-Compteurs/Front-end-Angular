@@ -3,14 +3,14 @@ import {InstanceCompteurDto} from "./InstanceCompteurDto";
 interface BatimentAListerDto {
   batimentId : number,
   adresse : string,
-  nombre_etages:number,
-  type_batiment:string,
+  nombreEtages:number,
+  typeBatiment:string,
 }
 interface BatimentDto {
   batimentId : number,
   adresse : string,
-  nombre_etages:number,
-  type_batiment:string,
+  nombreEtages:number,
+  typeBatiment:string,
   instanceCompteur : InstanceCompteurDto[]
 }
 

@@ -6,6 +6,8 @@ import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import { RouterLink } from '@angular/router';
 import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
+import {BatimentsService} from "../../services/batiments/batiments.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 @Component({
   selector: 'app-liste-batiments',
   standalone: true,
@@ -28,36 +30,32 @@ export class ListeBatimentsComponent implements OnInit {
   // Le bâtiment actif
   batimentActif! : BatimentDto
   constructor(
-    private datePipe:DatePipe
+    private datePipe:DatePipe,
+    private _service: BatimentsService
   ) {
     // Utilisation des services
   }
   ngOnInit() {
-    // Remplir la liste des compteurs
+    // Remplir la liste des bâtiments
+    this._service.listerBatiments().subscribe({
+      next : (result) => {
+        this.batiments = result
+        console.log(this.batiments)
+      },
+      error : error => {
 
+      }
+    })
   }
   // Les bâtiments à ajouter
-  batiments: BatimentAListerDto[] = [
-    {
-      batimentId : 1,
-      adresse: "35, Hay El Kassimiah, Artisanal, Beni Mellal",
-      nombre_etages: 2,
-      type_batiment: "Immeuble",
-    },
-    {
-      batimentId : 2,
-      adresse: "29, Bloc E, Riad esSalam, Mohammedia",
-      nombre_etages: 3,
-      type_batiment: "Maison",
-    }
-  ]
+  batiments!: BatimentAListerDto[]
   // Les bâtiments avec des détails à afficher
   batimentsDetailles: BatimentDto[] = [
     {
       batimentId : 1,
       adresse: "35, Hay El Kassimiah, Artisanal, Beni Mellal",
-      nombre_etages: 2,
-      type_batiment: "Immeuble",
+      nombreEtages: 2,
+      typeBatiment: "Immeuble",
       instanceCompteur : [
         {
           instanceCompteurId : 1,
@@ -100,8 +98,8 @@ export class ListeBatimentsComponent implements OnInit {
     {
       batimentId : 2,
       adresse: "29, Bloc E, Riad esSalam, Mohammedia",
-      nombre_etages: 2,
-      type_batiment: "Maison",
+      nombreEtages: 2,
+      typeBatiment: "Maison",
       instanceCompteur : [
         {
           instanceCompteurId : 1,
