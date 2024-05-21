@@ -8,15 +8,18 @@ interface ReleveDto {
   releveCadrans: ReleveCadranDto[]
 }
 
-interface RegisterReleveDto {
-  releveId: number,
+interface ajouterReleveDto {
   instanceCompteurId: number,
-  agentId: number,
-  dateReleve: Date,
-  releveCadrans: []
+  operateurId: number,
+}
+
+interface confirmerAjoutReleveDto {
+  releveId: number,
+  releveCadranDtos : ReleveCadranDto[]
 }
 
 export {
   ReleveDto,
-  RegisterReleveDto
+  ajouterReleveDto,
+  confirmerAjoutReleveDto
 }

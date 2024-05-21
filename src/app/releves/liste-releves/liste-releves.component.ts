@@ -2,7 +2,7 @@
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
-import {RegisterReleveDto, ReleveDto} from "../../DTOs/ReleveDto";
+import {ajouterReleveDto, ReleveDto} from "../../DTOs/ReleveDto";
 import {DatePipe, NgForOf} from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
