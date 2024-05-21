@@ -73,12 +73,27 @@ export class ListeBatimentsComponent implements OnInit {
 
   updateBatiment(batimentId: number) {
     // C'est batimentActif qu'il faut envoyer dans le corps de la requête
-
+    this._service.updateBatiment(batimentId, this.batimentActif).subscribe({
+      next : value => {
+        console.log(`Bâtiment ${batimentId} mis à jour avec succès !`)
+        location.reload()
+      },
+      error : err => {
+        console.log(`Erreur lors de la modification du bâtiment ${err}`)
+      }
+    })
   }
 
   // Supprimer un bâtiment
   deleteBatiment(batimentId:number){
-
+    this._service.deleteBatiment(batimentId).subscribe({
+      next: value => {
+        console.log(`Bâtiment avec identifiant ${batimentId} supprimé avec succèes`)
+        location.reload()
+      },
+      error: err => {
+        console.log(`Erreur lors de la suppression du bâtiment ${err}`)
+      }
+    })
   }
-
 }

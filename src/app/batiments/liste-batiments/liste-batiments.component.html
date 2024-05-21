@@ -28,6 +28,7 @@
               <th class="p-2 text-left">adresse</th>
               <th class="p-2 text-left">Nombre étages</th>
               <th class="p-2 text-left">Type batiment</th>
+              <th class="p-2 text-left">Supprimer</th>
               <th class="p-2 text-left">Détails</th>
             </tr>
             </thead>
@@ -37,6 +38,13 @@
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ batiment.adresse }}</td>
                 <td class="p-2 text-left">{{ batiment.nombreEtages}}</td>
                 <td class="p-2 text-left">{{ batiment.typeBatiment }}</td>
+                <td class="p-2 text-left">
+                  <div
+                    (click)="deleteBatiment(batiment.batimentId)"
+                    class="flex flex-row justify-center items-center w-10 h-10 cursor-pointer text-white bg-red-500 hover:bg-white hover:text-red-500 text-xl p-2 rounded-full">
+                    <span class="pi pi-trash"></span>
+                  </div>
+                </td>
                 <td class="p-2 text-left">
                   <div
                     (click)="voirDetailsBatiment(batiment.batimentId)"
@@ -64,6 +72,26 @@
                      [(ngModel)]="batimentActif.batimentId"
                      [ngModelOptions]="{standalone: true}"
                      placeholder="Numéro bâtiment">
+            </div>
+
+            <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+              <span class="p-1 text-indigo-500 w-full mr-2 text-xl font-bold">Type bâtiment</span>
+              <input type="text"
+                     [disabled]="false"
+                     class="border-white text-md w-full focus:outline-none"
+                     [(ngModel)]="batimentActif.typeBatiment"
+                     [ngModelOptions]="{standalone: true}"
+                     placeholder="Type Bâtiment">
+            </div>
+
+            <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+              <span class="p-1 text-indigo-500 w-full mr-2 text-xl font-bold">Nombre étages</span>
+              <input type="text"
+                     [disabled]="false"
+                     class="border-white text-md w-full focus:outline-none"
+                     [(ngModel)]="batimentActif.nombreEtages"
+                     [ngModelOptions]="{standalone: true}"
+                     placeholder="Nombre étages">
             </div>
 
             <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
