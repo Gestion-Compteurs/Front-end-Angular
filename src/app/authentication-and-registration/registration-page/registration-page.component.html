@@ -2,21 +2,55 @@
   <p class="text-white font-bold text-xl p-2">Inscription</p>
 
   <form (ngSubmit)="registerUser()">
-    <div class="flex flex-row items-center bg-white rounded-lg pr-6">
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+      
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-user"></span>
+      <input type="text"
+             [(ngModel)]="user.Nom"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="First name" class="p-2 text-md rounded-lg">
+    </div>
+
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+      
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-user"></span>
+      <input type="text"
+             [(ngModel)]="user.Prenom"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="Last name" class="p-2 text-md rounded-lg">
+    </div>
+
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+    <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-calendar"></span>
+      <input type="date"
+             [(ngModel)]="user.DateDeNaissance"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="Age" class="p-2 text-md rounded-lg">
+    </div>
+
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
       <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-envelope"></span>
       <input type="text"
              [(ngModel)]="user.email"
              [ngModelOptions]="{standalone: true}"
-             placeholder="Your email address" class="p-2 text-md rounded-lg">
+             placeholder="Email address" class="p-2 text-md rounded-lg">
     </div>
 
     <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
-      <span class="p-2 pl-1 text-red-500 text-xl font-bold pi pi-shield"></span>
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-lock"></span>
       <input type="password"
              [(ngModel)]="user.password"
              [ngModelOptions]="{standalone: true}"
-             placeholder="Your password" class="p-2 text-md rounded-lg">
+             placeholder="Password" class="p-2 text-md rounded-lg">
     </div>
+
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-lock"></span>
+        <input type="text"
+               [(ngModel)]="user.Confirmpassword"
+               [ngModelOptions]="{standalone: true}"
+               placeholder="Confirm password" class="p-2 text-md rounded-lg">
+      </div>
 
     <div class="flex flex-row mt-12 justify-end">
       <button

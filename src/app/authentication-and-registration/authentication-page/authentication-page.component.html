@@ -8,17 +8,17 @@
         [(ngModel)]="user.email"
         [ngModelOptions]="{standalone: true}"
         type="text"
-        placeholder="Your email address"
+        placeholder="Email address"
         class="p-2 text-md rounded-lg">
     </div>
 
     <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
-      <span class="p-2 pl-1 text-red-500 text-xl font-bold pi pi-shield"></span>
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-lock"></span>
       <input
         [(ngModel)]="user.password"
         [ngModelOptions]="{standalone: true}"
         type="password"
-        placeholder="Your password"
+        placeholder="Password"
         class="p-2 text-md rounded-lg">
     </div>
 

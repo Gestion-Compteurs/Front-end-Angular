@@ -1,6 +1,10 @@
 interface AdminRegistrationDto {
+  Nom:string,
+  Prenom:string,
+  DateDeNaissance:Date,
   email: string,
   password:string,
+  Confirmpassword:string,
 }
 
 interface AdminAuthenticationDto {

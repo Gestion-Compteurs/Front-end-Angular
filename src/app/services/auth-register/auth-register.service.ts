@@ -13,7 +13,8 @@ export class AuthRegisterService {
   private http = inject(HttpClient)
 
   // Le chemin vers l'API ASP.NET
-  apiUrl:string = "http://localhost:5163"
+  //apiUrl:string = "http://localhost:5163"
+  apiUrl:string = "https://localhost:7058";
 
   constructor(private _router: Router, @Inject(DOCUMENT) private document: Document) {
 

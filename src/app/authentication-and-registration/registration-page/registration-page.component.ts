@@ -19,8 +19,12 @@ export class RegistrationPageComponent implements OnInit {
   _router: Router = inject(Router)
 
   user: AdminRegistrationDto = {
+    Nom:'',
+    Prenom:'',
+    DateDeNaissance:new Date(),
     email: '',
-    password: ''
+    password: '',
+    Confirmpassword:'',
   };
 
   constructor() {
