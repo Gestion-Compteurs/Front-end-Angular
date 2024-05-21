@@ -27,7 +27,7 @@ export class AjoutRelevesComponent {
   // L'identifiant de l'instance du compteur
   instanceCompteurId! : number
   constructor(
-    private router:Router,
+    private _router:Router,
     private route:ActivatedRoute,
     private _service: RelevesService
   ) {
@@ -41,17 +41,32 @@ export class AjoutRelevesComponent {
   releveARenseigner! : confirmerAjoutReleveDto
   // photo de rélève
   selectedFile: string | ArrayBuffer | null = null;
-  registerReleve(): void{
-    // Fonction pour enregistrer une rélève
-  }
-
   // Demander la création de la relève
-  demanderCreationReleve(){
-
+  registerReleve(): void{
+    this._service.demanderCreationReleve(this.releve$).subscribe({
+      next: value => {
+        this.releveARenseigner = value
+        console.log(`Nouvelle relève créée à renseigner : ${this.releveARenseigner}`)
+      },
+      error: err => {
+        console.log(`Erreur dans la demande de création de la nouvelle relève : ${err}`)
+      }
+    })
   }
+
   // Demander l'enregistrement de la relève
   demanderEnregistrementReleve() {
-
+    this._service.demanderEnregistrementReleve(this.releveARenseigner).subscribe({
+      next: value => {
+        this._router.navigate(['/instance-compteur', this.instanceCompteurId])
+          .then(r => {
+            console.log(`Nouvelle relève enregistrée : ${value}`)
+          })
+      },
+      error: err => {
+        console.log(`Erreur dans la confirmation de création de la nouvelle relève : ${err}`)
+      }
+    })
   }
   onFileSelected(event: any) {
     const file = event.target.files[0];
@@ -63,6 +78,10 @@ export class AjoutRelevesComponent {
         console.log("Selected file "+ this.selectedFile)
       };
     }
+  }
+
+  updateReleveCadran() {
+
   }
 }
 

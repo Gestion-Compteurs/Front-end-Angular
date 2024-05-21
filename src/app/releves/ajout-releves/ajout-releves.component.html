@@ -23,26 +23,26 @@
             <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-users"></span>
             <input type="text"
                    class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="releve$.agentId"
+                   [(ngModel)]="releve$.operateurId"
                    [ngModelOptions]="{standalone: true}"
                    placeholder="id agent">
           </div>
-          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-calendar"></span>
-            <input type="date"
-                   class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="releve$.dateReleve"
-                   [ngModelOptions]="{standalone: true}"
-                   placeholder="date releve">
-          </div>
-
-          <button type="submit" class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
+          <button
+            disabled="{{this.releveARenseigner ? 'true' : 'false'}}"
+            type="submit"
+            class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
             <span class="p-2">Ajouter</span>
             <span class="pi pi-arrow-right"></span>
           </button>
+        </form>
 
 
-          <div class="bg-white" *ngIf="">
+        <form
+          *ngIf="releveARenseigner"
+          (ngSubmit)="demanderEnregistrementReleve()"
+          class = "flex flex-col p-3 gap-y-2"
+        >
+          <div class="bg-white" >
             <div class="flex overflow-auto flex-col md:flex">
               <table class="">
                 <thead>
@@ -55,14 +55,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let instanceCadran of releve.releveCadrans, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
-                  <td class="p-2 text-left">{{ instanceCadran.releveCadranId }}</td>
-                  <td class="p-2 text-left">{{ instanceCadran.instanceCadranId }}</td>
-                  <td class="p-2 text-left">{{ instanceCadran.prixWatt }}</td>
+                <tr *ngFor="let releveCadranDto of releveARenseigner.releveCadranDtos, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+                  <td class="p-2 text-left">{{ releveCadranDto.releveCadranId }}</td>
+                  <td class="p-2 text-left">{{ releveCadranDto.instanceCadranId }}</td>
+                  <td class="p-2 text-left">{{ releveCadranDto.prixWatt }}</td>
                   <td class="p-2 text-left">
                     <input type="text"
                            class="border-white text-md focus:outline-none  p-1 rounded-lg {{i%2!=0?'bg-blue-300':'bg-white'}}"
-                           [(ngModel)]="instanceCadran.indexRoues"
+                           [(ngModel)]="releveCadranDto.indexRoues"
                            [ngModelOptions]="{standalone:true}"
                     >
                   </td>
@@ -79,7 +79,6 @@
               </table>
             </div>
           </div>
-
         </form>
 
       </div>

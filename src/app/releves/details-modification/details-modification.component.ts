@@ -44,12 +44,14 @@ export class DetailsModificationComponent implements OnInit{
     dateReleve: new Date(),
     releveCadrans: [
       {
+        releveId : 1,
         releveCadranId : 1,
         instanceCadranId: 1,
         indexRoues: 1689,
         prixWatt: 200
       },
       {
+        releveId : 1,
         releveCadranId : 2,
         instanceCadranId: 2,
         indexRoues: 189,
