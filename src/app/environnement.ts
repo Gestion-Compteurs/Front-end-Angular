@@ -9,7 +9,7 @@ const compteursServiceAddress = `${addressRoot}/Compteur`
 // La racine de toutes les adresses des requêtes sur les instances cadrans
 const instancesCadransServiceAddress = `${addressRoot}/InstanceCadran`
 // La racine de toutes les adresses des requêtes sur les instances compteurs
-const instancesCompteursServiceAddress = `${addressRoot}/InstanceCompteur`
+const instancesCompteursServiceAddress = `${addressRoot}/instanceCompteur`
 // La racine de toutes les adresses des requêtes sur les instances relèves
 const relevesServiceAddress = `${addressRoot}/Releve`
 // La racine de toutes les adresses des requêtes sur les instances relèves cadran

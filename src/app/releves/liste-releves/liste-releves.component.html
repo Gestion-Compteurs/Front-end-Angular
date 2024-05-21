@@ -25,13 +25,32 @@
               <th class="p-2 text-left">Date</th>
               <th class="p-2 text-left">Batiment</th>
               <th class="p-2 text-left">Type compteur</th>
-              <th class="p-2 text-left">Modifier</th>
+              <th class="p-2 text-left">Actions</th>
             </tr>
             </thead>
-            <tr *ngFor="let releve of releves, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+            <tr *ngFor="let releve of instanceCompteur.releves, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
               <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ releve.releveId }}</td>
+              <td class="p-2 text-left font-bold text-blue-600 hover:underline">
+                <a
+                  class="cursor-pointer"
+                  [routerLink]="['/agents/details-modification',releve.agentId]"
+                  >
+                  {{ releve.agentId }}
+                </a>
+              </td>
 
               <td class="p-2 text-left">{{ releve.dateReleve | formatterDate }}</td>
+
+              <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ instanceCompteur.batimentId }}              </td>
+
+              <td class="p-2 text-left font-bold text-blue-600 hover:underline">
+                <a
+                  class="cursor-pointer"
+                  [routerLink]="['/compteurs/details-modification',instanceCompteur.compteurId]"
+                >
+                  {{ instanceCompteur.compteurId }}
+                </a>
+              </td>
 
               <td>
                 <div class="flex flex-row gap-x-2">
