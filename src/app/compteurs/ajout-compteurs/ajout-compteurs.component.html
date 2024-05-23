@@ -11,7 +11,7 @@
     <div class="flex flex-row">
       <div class="flex flex-1 w-3/5 flex-col ">
         <form
-          (ngSubmit)="AjouterCompteur()"
+          (ngSubmit)="ajouterCompteur()"
           class = "flex flex-col p-3 gap-y-2"
         >
           <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
@@ -40,16 +40,6 @@
                    [ngModelOptions]="{standalone: true}"
                    placeholder="voltageMax">
           </div>
-          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-sitemap"></span>
-            <input type="text"
-                   class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="compteur$.nombreCadran"
-                   [ngModelOptions]="{standalone: true}"
-                   placeholder="nombre cadrans">
-          </div>
-
-
 
           <button type="submit" class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
             <span class="p-2">Ajouter</span>
