@@ -26,6 +26,17 @@ import {RelevesService} from "../../services/releves/releves.service";
 export class AjoutRelevesComponent {
   // L'identifiant de l'instance du compteur
   instanceCompteurId! : number
+  // Les détails de la relève à enregistrer
+  releve$ :ajouterReleveDto = {
+    instanceCompteurId : 0,
+    operateurId: 0
+  }
+  // La relève créée à renseigner
+  releveARenseigner! : confirmerAjoutReleveDto
+  // Si l'utilisateur a déjà demandé la création ou non
+  creationDemandee : boolean = false
+  // photo de rélève
+  selectedFile: string | ArrayBuffer | null = null;
   constructor(
     private _router:Router,
     private route:ActivatedRoute,
@@ -34,19 +45,20 @@ export class AjoutRelevesComponent {
     // L'identifiant de l'instance compteur
     this.instanceCompteurId = this.route.snapshot.params['idInstanceCompteur']
     console.log("L'identifiant de l'instance compteur qui recevra une nouvelle relève est "+ this.instanceCompteurId)
+    // Renseigner l'identifiant de l'instance compteur dans le corps de la requête
+    this.releve$.instanceCompteurId = this.instanceCompteurId
+    console.log(this.releve$)
+    console.log(this.creationDemandee)
   }
-  // Les détails de la relève à enregistrer
-  releve$! :ajouterReleveDto
-  // La relève créée à renseigner
-  releveARenseigner! : confirmerAjoutReleveDto
-  // photo de rélève
-  selectedFile: string | ArrayBuffer | null = null;
   // Demander la création de la relève
   registerReleve(): void{
+    console.log(this.releve$)
     this._service.demanderCreationReleve(this.releve$).subscribe({
       next: value => {
         this.releveARenseigner = value
         console.log(`Nouvelle relève créée à renseigner : ${this.releveARenseigner}`)
+        this.creationDemandee =  true
+        console.log(this.creationDemandee)
       },
       error: err => {
         console.log(`Erreur dans la demande de création de la nouvelle relève : ${err}`)
@@ -56,6 +68,7 @@ export class AjoutRelevesComponent {
 
   // Demander l'enregistrement de la relève
   demanderEnregistrementReleve() {
+    console.log(this.creationDemandee)
     this._service.demanderEnregistrementReleve(this.releveARenseigner).subscribe({
       next: value => {
         this._router.navigate(['/instance-compteur', this.instanceCompteurId])

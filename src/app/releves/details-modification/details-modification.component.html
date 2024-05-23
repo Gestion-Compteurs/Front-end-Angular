@@ -9,7 +9,7 @@
   <div class="flex flex-row">
     <div class="flex flex-1 w-3/5 flex-col">
       <form
-        (ngSubmit)="updateReleve()"
+        (ngSubmit)="modifierReleve()"
         class = "flex flex-col p-3 gap-y-2"
       >
         <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
@@ -95,7 +95,7 @@
                   >
                 </td>
                 <td>
-                  <div class="flex flex-row gap-x-2" (click)="updateReleveCadran()">
+                  <div class="flex flex-row gap-x-2" (click)="modifierReleveCadran()">
                     <a
                       class="flex justify-center items-center font-bold text-xl cursor-pointer bg-indigo-500 border-indigo-500 text-white hover:bg-white hover:text-indigo-500 hover:border-white rounded-full border-2 p-1 w-12 h-12">
                       <span class="pi pi-file-edit"></span>

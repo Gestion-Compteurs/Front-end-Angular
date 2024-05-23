@@ -6,7 +6,7 @@ interface InstanceCompteurDto {
   batimentId : number,
   compteurId: number,
   dateInstallation : Date,
-  instanceCadrans: InstanceCadranDto,
+  instanceCadrans: InstanceCadranDto[],
   releves: ReleveDto[]
 }
 

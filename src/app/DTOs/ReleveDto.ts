@@ -15,11 +15,19 @@ interface ajouterReleveDto {
 
 interface confirmerAjoutReleveDto {
   releveId: number,
-  releveCadranDtos : ReleveCadranDto[]
+  releveCadrans : ReleveCadranDto[]
+}
+
+interface modifierReleveDto  {
+  releveId: number,
+  dateReleve: Date,
+  instanceCompteurId: number,
+  operateurId: number
 }
 
 export {
   ReleveDto,
   ajouterReleveDto,
-  confirmerAjoutReleveDto
+  confirmerAjoutReleveDto,
+  modifierReleveDto
 }

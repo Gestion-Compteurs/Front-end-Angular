@@ -7,7 +7,7 @@ import {DatePipe, NgForOf} from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
 import {RelevesService} from "../../services/releves/releves.service";
-import {InstancesCompteursService} from "../../services/instancesCompteurs/instances-compteurs.service";
+import {InstancesCompteursService} from "../../services/instances-compteurs/instances-compteurs.service";
 import {InstanceCompteurDto} from "../../DTOs/InstanceCompteurDto";
 import {json} from "node:stream/consumers";
 
@@ -40,7 +40,7 @@ export class ListeRelevesComponent {
     this.retrouverInstanceCompteur(this.instanceCompteurId)
   }
   retrouverInstanceCompteur(instanceCompteurId: number) {
-    this._instancesCompteursService.retrouverInstanceCompteurEtSesInstancesCadransEtReleves(instanceCompteurId).subscribe({
+    this._instancesCompteursService.retrouverInstanceCompteurEtSesReleves(instanceCompteurId).subscribe({
       next : value => {
         this.instanceCompteur = value
         console.log(`Instance compteur active ${this.instanceCompteur}`)
@@ -52,6 +52,14 @@ export class ListeRelevesComponent {
   }
   // Supprimer une relève
   deleteReleve(releveId: number) {
-    // Fonction pour supprimer une relève
+    this._relevesService.supprimerReleve(releveId).subscribe({
+      next : value => {
+        console.log(`Relève supprimée ${value}`)
+        this.retrouverInstanceCompteur(this.instanceCompteurId)
+      },
+      error: err => {
+        console.log(`Erreur lors de la suppression de la relève : ${err}`)
+      }
+    })
   }
 }

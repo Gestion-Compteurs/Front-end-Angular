@@ -6,6 +6,13 @@ interface ReleveCadranDto {
   indexRoues: number,
 }
 
+interface modifierReleveCadranDto {
+  releveCadranId: number,
+  indexRoues: number,
+  prixWatt: number
+}
+
 export {
-  ReleveCadranDto
+  ReleveCadranDto,
+  modifierReleveCadranDto
 }

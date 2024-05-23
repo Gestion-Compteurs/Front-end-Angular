@@ -25,7 +25,7 @@ import {BatimentsDto} from "../../DTOs/BatimentsDto";
   templateUrl: './liste-batiments.component.html',
   styleUrl: './liste-batiments.component.css'
 })
-export class ListeBatimentsComponent implements OnInit {
+export class ListeBatimentsComponent {
   // L'identifiant du bâtiment actif
   idBatimentActif! : number
   // Le bâtiment actif
@@ -35,8 +35,9 @@ export class ListeBatimentsComponent implements OnInit {
     private _service: BatimentsService
   ) {
     // Utilisation des services
+    this.retrouverListeBatiments()
   }
-  ngOnInit() {
+  retrouverListeBatiments() {
     // Remplir la liste des bâtiments
     this._service.listerBatiments().subscribe({
       next : (result) => {
@@ -89,7 +90,7 @@ export class ListeBatimentsComponent implements OnInit {
     this._service.deleteBatiment(batimentId).subscribe({
       next: value => {
         console.log(`Bâtiment avec identifiant ${batimentId} supprimé avec succèes`)
-        location.reload()
+        this.retrouverListeBatiments()
       },
       error: err => {
         console.log(`Erreur lors de la suppression du bâtiment ${err}`)

@@ -28,9 +28,9 @@
                    placeholder="id agent">
           </div>
           <button
-            disabled="{{this.releveARenseigner ? 'true' : 'false'}}"
+            [disabled]="creationDemandee"
             type="submit"
-            class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
+            class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl cursor-pointer">
             <span class="p-2">Ajouter</span>
             <span class="pi pi-arrow-right"></span>
           </button>
@@ -48,17 +48,24 @@
                 <thead>
                 <tr class="bg-white border-b-2">
                   <th class="p-2 text-left">ID Relève</th>
+                  <th class="p-2 text-left">ID Relève cadran</th>
                   <th class="p-2 text-left">ID instance cadran</th>
                   <th class="p-2 text-left">Prix watt</th>
                   <th class="p-2 text-left">Index roues</th>
-                  <th class="p-2 text-left">Modifier</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let releveCadranDto of releveARenseigner.releveCadranDtos, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+                <tr *ngFor="let releveCadranDto of releveARenseigner.releveCadrans, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+                  <td class="p-2 text-left">{{ releveCadranDto.releveId }}</td>
                   <td class="p-2 text-left">{{ releveCadranDto.releveCadranId }}</td>
                   <td class="p-2 text-left">{{ releveCadranDto.instanceCadranId }}</td>
-                  <td class="p-2 text-left">{{ releveCadranDto.prixWatt }}</td>
+                  <td class="p-2 text-left">
+                    <input type="text"
+                           class="border-white text-md focus:outline-none  p-1 rounded-lg {{i%2!=0?'bg-blue-300':'bg-white'}}"
+                           [(ngModel)]="releveCadranDto.prixWatt"
+                           [ngModelOptions]="{standalone:true}"
+                    >
+                  </td>
                   <td class="p-2 text-left">
                     <input type="text"
                            class="border-white text-md focus:outline-none  p-1 rounded-lg {{i%2!=0?'bg-blue-300':'bg-white'}}"
@@ -66,19 +73,17 @@
                            [ngModelOptions]="{standalone:true}"
                     >
                   </td>
-                  <td>
-                    <div class="flex flex-row gap-x-2" (click)="updateReleveCadran()">
-                      <a
-                        class="flex justify-center items-center font-bold text-xl cursor-pointer bg-indigo-500 border-indigo-500 text-white hover:bg-white hover:text-indigo-500 hover:border-white rounded-full border-2 p-1 w-12 h-12">
-                        <span class="pi pi-file-edit"></span>
-                      </a>
-                    </div>
-                  </td>
                 </tr>
                 </tbody>
               </table>
             </div>
           </div>
+          <button
+            type="submit"
+            class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl cursor-pointer">
+            <span class="p-2">Confirmer</span>
+            <span class="pi pi-arrow-right"></span>
+          </button>
         </form>
 
       </div>
