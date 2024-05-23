@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
 import {RelevesService} from "../../services/releves/releves.service";
+import {modifierReleveCadranDto, ReleveCadranDto} from "../../DTOs/ReleveCadranDto";
 
 @Component({
   selector: 'app-details-modification',
@@ -33,9 +34,10 @@ export class DetailsModificationComponent {
   ) {
     // L'identifiant de l'instance compteur
     this.releveId = this.route.snapshot.params['releveId']
+    this.retrouverReleveEtSesRelevesCadrans(this.releveId)
     console.log("L'identifiant de la relève à modifier : " + this.releveId)
   }
-  retrouverReleveEtSesRelevesCadran(releveId: number){
+  retrouverReleveEtSesRelevesCadrans(releveId: number){
     this._service.retrouverReleveEtSesRelevesCadrans(releveId).subscribe({
       next : value => {
         this.releve = value
@@ -55,20 +57,29 @@ export class DetailsModificationComponent {
     }
     this._service.modifierReleve(releveModifiee).subscribe({
       next : value => {
-
+        this.releve =value
+        console.log(`Relève modifiée, la nouvelle valeur est ${this.releve}`)
+        this.retrouverReleveEtSesRelevesCadrans(this.releveId)
       },
       error: err => {
-
+        console.log(`Une erreur s'est produite lors de la modification de la relève ${err}`)
       }
     })
   }
-  // Formattage de date
-  formatterDate(date:Date) : any {
-     // Format AAAA-MM-JJ
-    return this.datePipe.transform(date, 'yyyy-MM-dd');
-  }
-  modifierReleveCadran() {
-    // Pas encore implémentée
-    console.log("Relève cadran updated")
+  modifierReleveCadran(releveCadranModifiee: ReleveCadranDto) {
+    let releveCadranModifieeAEnvoyer: modifierReleveCadranDto = {
+      releveCadranId: releveCadranModifiee.releveCadranId,
+      indexRoues: releveCadranModifiee.indexRoues,
+      prixWatt: releveCadranModifiee.prixWatt
+    }
+    this._service.modifierReleveCadran(releveCadranModifieeAEnvoyer).subscribe({
+      next : value => {
+        console.log(`Relève cadran modifiée, la nouvelle valeur est ${value}`)
+        this.retrouverReleveEtSesRelevesCadrans(this.releveId)
+      },
+      error: err => {
+        console.log(`Une erreur s'est produite lors de la modification de la relève cadran ${err}`)
+      }
+    })
   }
 }

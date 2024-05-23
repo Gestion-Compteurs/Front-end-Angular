@@ -23,10 +23,14 @@
         </div>
 
         <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-          <span class="p-1 text-indigo-500 w-auto mr-2 text-xl font-bold">Numéro relève</span>
-          <input type="text"
-                 class="border-white text-md focus:outline-none"
-                 placeholder="Numéro compteur">
+          <span class="p-1 text-indigo-500 w-auto mr-2 text-xl font-bold">Numéro instance compteur</span>
+          <input
+            disabled
+            [ngModel]="releve.instanceCompteurId"
+            [ngModelOptions]="{standalone: true}"
+            type="text"
+            class="border-white text-md focus:outline-none"
+            placeholder="Numéro compteur">
         </div>
 
         <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
@@ -44,7 +48,7 @@
           <input type="date"
                  [disabled]="true"
                  class="border-white text-md focus:outline-none"
-                 [ngModel]="formatterDate(releve.dateReleve)"
+                 [ngModel]="releve.dateReleve | formatterDate"
                  [ngModelOptions]="{standalone: true}"
           >
         </div>
@@ -55,15 +59,6 @@
                  [(ngModel)]="releve.dateReleve"
                  [ngModelOptions]="{standalone: true}"
           >
-        </div>
-
-
-
-        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-          <span class="p-1 text-indigo-500 w-auto mr-2 text-xl font-bold">Numéro du bâtiment</span>
-          <input type="text"
-                 class="border-white text-md focus:outline-none"
-                 placeholder="Numéro du bâtiment">
         </div>
 
         <div class="mt-1 bg-indigo-500 flex flex-row justify-center items-center">
@@ -83,19 +78,25 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let instanceCadran of releve.releveCadrans, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
-                <td class="p-2 text-left">{{ instanceCadran.releveCadranId }}</td>
-                <td class="p-2 text-left">{{ instanceCadran.instanceCadranId }}</td>
-                <td class="p-2 text-left">{{ instanceCadran.prixWatt }}</td>
+              <tr *ngFor="let releveCadran of releve.releveCadrans, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+                <td class="p-2 text-left">{{ releveCadran.releveCadranId }}</td>
+                <td class="p-2 text-left">{{ releveCadran.instanceCadranId }}</td>
                 <td class="p-2 text-left">
                   <input type="text"
                          class="border-white text-md focus:outline-none  p-1 rounded-lg {{i%2!=0?'bg-blue-300':'bg-white'}}"
-                         [(ngModel)]="instanceCadran.indexRoues"
+                         [(ngModel)]="releveCadran.prixWatt"
+                         [ngModelOptions]="{standalone:true}"
+                  >
+                </td>
+                <td class="p-2 text-left">
+                  <input type="text"
+                         class="border-white text-md focus:outline-none  p-1 rounded-lg {{i%2!=0?'bg-blue-300':'bg-white'}}"
+                         [(ngModel)]="releveCadran.indexRoues"
                          [ngModelOptions]="{standalone:true}"
                   >
                 </td>
                 <td>
-                  <div class="flex flex-row gap-x-2" (click)="modifierReleveCadran()">
+                  <div class="flex flex-row gap-x-2" (click)="modifierReleveCadran(releveCadran)">
                     <a
                       class="flex justify-center items-center font-bold text-xl cursor-pointer bg-indigo-500 border-indigo-500 text-white hover:bg-white hover:text-indigo-500 hover:border-white rounded-full border-2 p-1 w-12 h-12">
                       <span class="pi pi-file-edit"></span>
@@ -109,7 +110,7 @@
         </div>
 
         <button
-          [routerLink]="'/releves'"
+          [routerLink]="['../../',this.releve.instanceCompteurId]"
           type="button" class="flex flex-row justify-center items-center border-2 border-red-500 bg-red-500 text-white text-3xl">
           <span class="p-2">Quitter</span>
           <span class="pi pi-arrow-left"></span>

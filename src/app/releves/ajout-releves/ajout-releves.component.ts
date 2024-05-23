@@ -6,6 +6,7 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {RelevesService} from "../../services/releves/releves.service";
+import {json} from "node:stream/consumers";
 
 
 @Component({
@@ -32,7 +33,10 @@ export class AjoutRelevesComponent {
     operateurId: 0
   }
   // La relève créée à renseigner
-  releveARenseigner! : confirmerAjoutReleveDto
+  releveARenseigner : confirmerAjoutReleveDto = {
+    releveId: 0,
+    releveCadrans : []
+  }
   // Si l'utilisateur a déjà demandé la création ou non
   creationDemandee : boolean = false
   // photo de rélève
@@ -50,12 +54,14 @@ export class AjoutRelevesComponent {
     console.log(this.releve$)
     console.log(this.creationDemandee)
   }
+
   // Demander la création de la relève
   registerReleve(): void{
     console.log(this.releve$)
     this._service.demanderCreationReleve(this.releve$).subscribe({
       next: value => {
-        this.releveARenseigner = value
+        this.releveARenseigner.releveId = value.releveId
+        this.releveARenseigner.releveCadrans = value.releveCadrans
         console.log(`Nouvelle relève créée à renseigner : ${this.releveARenseigner}`)
         this.creationDemandee =  true
         console.log(this.creationDemandee)
@@ -69,11 +75,12 @@ export class AjoutRelevesComponent {
   // Demander l'enregistrement de la relève
   demanderEnregistrementReleve() {
     console.log(this.creationDemandee)
+    console.log(`Nouvelle relève envoyée : ${JSON.stringify(this.releveARenseigner)}`)
     this._service.demanderEnregistrementReleve(this.releveARenseigner).subscribe({
       next: value => {
-        this._router.navigate(['/instance-compteur', this.instanceCompteurId])
+        this._router.navigate(['/releves/instance-compteur', this.instanceCompteurId])
           .then(r => {
-            console.log(`Nouvelle relève enregistrée : ${value}`)
+            console.log(`Nouvelle relève enregistrée : ${JSON.stringify(value)}`)
           })
       },
       error: err => {

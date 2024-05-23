@@ -16,8 +16,8 @@ export class RelevesService {
   retrouverReleveEtSesRelevesCadrans(releveId: number):Observable<ReleveDto>{
     return this.http.get<ReleveDto>(`${relevesServiceAddress}/trouverReleve/${releveId}`)
   }
-  demanderCreationReleve(releveDto: ajouterReleveDto) : Observable<confirmerAjoutReleveDto>{
-    return this.http.post<confirmerAjoutReleveDto>(`${relevesServiceAddress}/ajouterPourInstanceCompteur`,releveDto)
+  demanderCreationReleve(releveDto: ajouterReleveDto) : Observable<ReleveDto>{
+    return this.http.post<ReleveDto>(`${relevesServiceAddress}/ajouterPourInstanceCompteur`,releveDto)
   }
   // Demander l'enregistrement de la relève
   demanderEnregistrementReleve(confirmationCreationReleveDto: confirmerAjoutReleveDto) : Observable<ReleveDto> {

@@ -77,7 +77,7 @@ export class ListeBatimentsComponent {
     this._service.updateBatiment(batimentId, this.batimentActif).subscribe({
       next : value => {
         console.log(`Bâtiment ${batimentId} mis à jour avec succès !`)
-        location.reload()
+        this.retrouverListeBatiments()
       },
       error : err => {
         console.log(`Erreur lors de la modification du bâtiment ${err}`)
