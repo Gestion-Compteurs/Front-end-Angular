@@ -10,6 +10,13 @@ interface InstanceCompteurDto {
   releves: ReleveDto[]
 }
 
+interface AjouterInstanceCompteurDto {
+  batimentId: number,
+  compteurId: number,
+  dateInstallation: Date
+}
+
 export {
+  AjouterInstanceCompteurDto,
   InstanceCompteurDto
 }
