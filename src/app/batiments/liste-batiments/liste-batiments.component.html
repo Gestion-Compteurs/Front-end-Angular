@@ -145,7 +145,7 @@
               </tbody>
             </table>
 
-            <a class="flex flex-row items-center justify-center text-xl text-indigo-500 bg-white hover:bg-indigo-500 hover:text-white rounded-md m-2 p-1" [routerLink]="'ajouter-nouveau'">
+            <a class="flex flex-row items-center justify-center text-xl text-indigo-500 bg-white hover:bg-indigo-500 hover:text-white rounded-md m-2 p-1" [routerLink]="['/batiments/ajouter-instances-compteur',this.batimentActif.batimentId]">
               <span class="pi pi-plus mr-1"></span>
               Ajouter nouvelle instance
             </a>
