@@ -8,7 +8,7 @@ import {RouterLink} from "@angular/router";
 import {CompteursService} from "../../services/compteurs/compteurs.service";
 
 @Component({
-  selector: 'app-liste-compteurs',
+  selector: 'app-liste-compteurs$',
   standalone: true,
   imports: [
     CustomNavbarComponent,
@@ -23,35 +23,32 @@ export class ListeCompteursComponent {
   constructor(
     private _service: CompteursService
   ) {
-    // Remplir la liste des compteurs, créer une fonction listerCompteurs() dans le service
+    this.retrouverListeCompteurs()
   }
 
-  // La liste des compteurs à afficher
-  compteurs: CompteurDto[] = [
-    {
-      compteurId : 0,
-      marque: "Ingelec",
-      modele : "type1",
-      voltageMax: 15,
-      nombreCadran: 8,
-    },
-    {
-      compteurId : 1,
-      marque: "Montelec",
-      modele : "type2",
-      voltageMax: 20,
-      nombreCadran: 12,
-    },
-    {
-      compteurId : 3,
-      marque: "Montelec",
-      modele : "type3",
-      voltageMax: 25,
-      nombreCadran: 22,
-    }
-  ]
+  // La liste des compteurs$ à afficher
+  compteurs$!: CompteurDto[]
+  // Retrouver la liste des compteurs
+  retrouverListeCompteurs(){
+    this._service.listerCompteurs().subscribe({
+      next: value => {
+        this.compteurs$ = value
+      },
+      error: err => {
+        console.log(`Une erreur s"est produite dans le listage des compteurs ${err}`)
+      }
+    })
+  }
+  // Supprimer un compteur
   deleteCompteur(compteurId:number){
-
+    this._service.supprimerCompteur(compteurId).subscribe({
+      next: value => {
+        console.log(`Compteur supprimé avec succès: ${value}`)
+        this.retrouverListeCompteurs()
+      },
+      error: err => {
+        console.log(`Une erreur s'est produite pendant la suppression du compteur : ${err}`)
+      }
+    })
   }
-
 }

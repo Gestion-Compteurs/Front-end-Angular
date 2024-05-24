@@ -5,7 +5,8 @@ interface CompteurDto {
   marque: string,
   modele: string,
   voltageMax: number,
-  nombreCadran: number
+  anneeCreation: number,
+  typesCadrans: CadranDto[]
 }
 
 interface AjouterCompteurDto {

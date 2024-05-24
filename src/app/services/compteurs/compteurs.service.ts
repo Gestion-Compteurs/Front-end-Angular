@@ -11,7 +11,7 @@ export class CompteursService {
   constructor(
     private http: HttpClient
   ) { }
-  // Lister les compteurs
+  // Lister les compteurs$
   listerCompteurs(): Observable<CompteurDto[]>{
     return this.http.get<CompteurDto[]>(`${compteursServiceAddress}`)
   }

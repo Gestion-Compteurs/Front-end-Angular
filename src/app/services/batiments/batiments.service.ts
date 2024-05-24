@@ -20,7 +20,7 @@ export class BatimentsService {
   listerBatiments(): Observable<BatimentAListerDto[]>{
     return this.http.get<BatimentAListerDto[]>(`${batimentsServiceAddress}`);
   }
-  // Retrouver bâtiment et instances compteurs
+  // Retrouver bâtiment et instances compteurs$
   retrouverBatimentsEtInstancesCompteurs(batimentId:number): Observable<BatimentDto>{
     return this.http.get<BatimentDto>(`${batimentsServiceAddress}/retrouverInstancesCompteur/${batimentId}`)
   }

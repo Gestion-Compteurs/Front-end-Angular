@@ -1,73 +1,60 @@
 <div class="mb-2">
     <app-custom-navbar></app-custom-navbar>
+</div>
+
+<div class="flex flex-col">
+
+  <div class="bg-indigo-500 flex flex-row justify-center">
+    <p class="text-white text-4xl my-2">Détails-Modification</p>
   </div>
 
-  <div class="flex flex-col">
+  <div class="flex flex-row">
+    <div class="flex flex-1 w-3/5 flex-col">
+      <form
+        (ngSubmit)="updateCompteur(this.compteurId)"
+        class = "flex flex-col p-3 gap-y-2"
+      >
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-gauge"></span>
+          <input type="text"
+                 class="border-white w-full text-md focus:outline-none"
+                 [(ngModel)]="compteur$.marque"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="Marque">
+        </div>
 
-    <div class="bg-indigo-500 flex flex-row justify-center">
-      <p class="text-white text-4xl my-2">Détails-Modification</p>
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-compass"></span>
+          <input type="text"
+                 class="border-white w-full text-md focus:outline-none"
+                 [(ngModel)]="compteur$.modele"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="Modèle">
+        </div>
+
+        <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+          <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-bolt"></span>
+          <input type="text"
+                 class="border-white w-full text-md focus:outline-none"
+                 [(ngModel)]="compteur$.voltageMax"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="Voltage maximum">
+        </div>
+
+        <button
+          [routerLink]="['/compteurs']"
+          type="button" class="flex flex-row justify-center items-center border-2 border-red-500 bg-red-500 text-white text-3xl">
+          <span class="p-2">Quitter</span>
+          <span class="pi pi-arrow-left"></span>
+        </button>
+
+        <button
+          type="submit" class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
+          <span class="p-2">Modifier</span>
+          <span class="pi pi-arrow-right"></span>
+        </button>
+
+      </form>
     </div>
-
-    <div class="flex flex-row">
-      <div class="flex flex-1 w-3/5 flex-col">
-        <form
-          (ngSubmit)="updateCompteur()"
-          class = "flex flex-col p-3 gap-y-2"
-        >
-          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-gauge"></span>
-            <input type="text"
-                   class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="compteur$.marque"
-                   [ngModelOptions]="{standalone: true}"
-                   placeholder="marque de compteur">
-          </div>
-
-          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-compass"></span>
-            <input type="text"
-                   class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="compteur$.modele"
-                   [ngModelOptions]="{standalone: true}"
-                   placeholder="modele compteur">
-          </div>
-
-          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-bolt"></span>
-            <input type="text"
-                   class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="compteur$.voltageMax"
-                   [ngModelOptions]="{standalone: true}"
-                   placeholder="capacité compteur">
-          </div>
-
-          <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-sitemap"></span>
-            <input type="text"
-                   class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="compteur$.nombreCadran"
-                   [ngModelOptions]="{standalone: true}"
-                   placeholder="nombre cadrans ">
-          </div>
-
-          <button
-            [routerLink]="''"
-            type="button" class="flex flex-row justify-center items-center border-2 border-red-500 bg-red-500 text-white text-3xl">
-            <span class="p-2">Quitter</span>
-            <span class="pi pi-arrow-left"></span>
-          </button>
-
-          <button
-            type="submit" class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
-            <span class="p-2">Modifier</span>
-            <span class="pi pi-arrow-right"></span>
-          </button>
-
-        </form>
-
-      </div>
-
-
-    </div>
-
   </div>
+</div>
