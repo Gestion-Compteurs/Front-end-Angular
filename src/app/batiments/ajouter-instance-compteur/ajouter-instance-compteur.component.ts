@@ -24,7 +24,7 @@ export class AjouterInstanceCompteurComponent {
   ajouterInstanceCompteurDto$ : AjouterInstanceCompteurDto = {
     batimentId: 0,
     compteurId: 0,
-    dateInstallation: new Date()
+    dateInstallation: ""
   }
   constructor(
     private _service: InstancesCompteursService,
@@ -36,7 +36,7 @@ export class AjouterInstanceCompteurComponent {
 
   // Ajouter une instance de compteur à un bâtiment
   ajouterInstanceABatiment(){
-    this.ajouterInstanceCompteurDto$.dateInstallation = formatterDate
+    this.ajouterInstanceCompteurDto$.dateInstallation = this.formatterDate(this.ajouterInstanceCompteurDto$.dateInstallation)
     this._service.ajouterInstanceCompteur(this.ajouterInstanceCompteurDto$).subscribe({
       next: value => {
         this._router.navigate(['/batiments'])
@@ -45,8 +45,19 @@ export class AjouterInstanceCompteurComponent {
           })
       },
       error: err => {
-        console.log(`Une erreur s'est produite lors de l'ajout de l'instance de compteur ${err}`)
+        console.log(`Une erreur s'est produite lors de l'ajout de l'instance de compteur ${JSON.stringify(err)}`)
       }
     })
+  }
+
+  formatterDate(isoString: string){
+    // Convertir la chaîne ISO en objet Date
+    const date = new Date(isoString);
+    // Extraire l'année, le mois et le jour
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Les mois sont de 0 à 11, donc ajout de 1
+    const day = date.getDate().toString().padStart(2, '0');
+    // Retourner la date formatée
+    return `${year}-${month}-${day}`;
   }
 }

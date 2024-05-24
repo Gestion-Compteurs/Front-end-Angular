@@ -13,7 +13,7 @@ interface InstanceCompteurDto {
 interface AjouterInstanceCompteurDto {
   batimentId: number,
   compteurId: number,
-  dateInstallation: Date
+  dateInstallation: string
 }
 
 export {

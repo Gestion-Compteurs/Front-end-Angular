@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AjouterInstanceCompteurDto, InstanceCompteurDto} from "../../DTOs/InstanceCompteurDto";
-import {instancesCompteursServiceAddress, relevesServiceAddress} from "../../environnement";
+import {batimentsServiceAddress, instancesCompteursServiceAddress, relevesServiceAddress} from "../../environnement";
 import transformJavaScript from "@angular-devkit/build-angular/src/tools/esbuild/javascript-transformer-worker";
 import {BatimentDto} from "../../DTOs/BatimentDto";
 
@@ -20,6 +20,6 @@ export class InstancesCompteursService {
   }
   // Ajouter une instance compteur à un bâtiment
   ajouterInstanceCompteur(ajouterInstanceCompteurDto: AjouterInstanceCompteurDto): Observable<BatimentDto>{
-    return this.http.post<BatimentDto>(`${instancesCompteursServiceAddress}/ajouterInstanceCompteur`,ajouterInstanceCompteurDto)
+    return this.http.post<BatimentDto>(`${batimentsServiceAddress}/ajouterInstanceCompteur`,ajouterInstanceCompteurDto)
   }
 }
