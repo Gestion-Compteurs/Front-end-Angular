@@ -1,11 +1,11 @@
 <div class="flex flex-col justify-around items-center m-4 p-4 h-auto w-auto rounded-lg bg-indigo-500">
   <p class="text-white font-bold text-xl p-2">Inscription</p>
 
-  <form (ngSubmit)="registerUser()">
+  <form (ngSubmit)="registerAdmin()">
     <div class="flex flex-row items-center bg-white rounded-lg pr-6">
       <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-envelope"></span>
       <input type="text"
-             [(ngModel)]="user.email"
+             [(ngModel)]="admin.email"
              [ngModelOptions]="{standalone: true}"
              placeholder="Your email address" class="p-2 text-md rounded-lg">
     </div>
@@ -13,7 +13,7 @@
     <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
       <span class="p-2 pl-1 text-red-500 text-xl font-bold pi pi-shield"></span>
       <input type="password"
-             [(ngModel)]="user.password"
+             [(ngModel)]="admin.password"
              [ngModelOptions]="{standalone: true}"
              placeholder="Your password" class="p-2 text-md rounded-lg">
     </div>

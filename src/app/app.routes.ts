@@ -13,6 +13,11 @@ export const routes: Routes = [
       .then(m=>m.AuthenticationAndRegistrationModule)
   },
   {
+    path : 'regies',
+    loadChildren: () => import('../app/regies/regies.module')
+      .then(m=>m.RegiesModule)
+  },
+  {
     path : 'agents',
     loadChildren: () => import('../app/agents-de-terrain/agents-de-terrain.module')
       .then(m=>m.AgentsDeTerrainModule)

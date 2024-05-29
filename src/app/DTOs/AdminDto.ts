@@ -8,6 +8,31 @@ interface AdminRegistrationRequestDto {
   confirmPassword: string
 }
 
+interface AdminRegistrationResponseDto {
+  adminId: number;
+  regieId: number;
+  nom: string;
+  prenom: string;
+  compteActif: boolean | null;
+  password: string;
+  dateDeNaissance: Date | string;
+  id: string;
+  userName: string;
+  normalizedUserName: string | null;
+  email: string;
+  normalizedEmail: string | null;
+  emailConfirmed: boolean;
+  passwordHash: string;
+  securityStamp: string;
+  concurrencyStamp: string;
+  phoneNumber: string | null;
+  phoneNumberConfirmed: boolean;
+  twoFactorEnabled: boolean;
+  lockoutEnd: string | null;
+  lockoutEnabled: boolean;
+  accessFailedCount: number;
+}
+
 interface AdminAuthenticationRequestDto {
   email: string,
   password: string,
@@ -46,6 +71,7 @@ interface AdminAuthenticationResponseDto {
 
 export {
   AdminRegistrationRequestDto,
+  AdminRegistrationResponseDto,
   AdminAuthenticationRequestDto,
   AdminAuthenticationResponseDto
 }
