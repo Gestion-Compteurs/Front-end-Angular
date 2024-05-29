@@ -52,7 +52,7 @@ interface AgentInListAllAgentsDto {
   cin: string;
   nom: string;
   prenom: string;
-  dateDeNaissance: string;
+  dateDeNaissance: Date | string;
 }
 
 export {

@@ -1,0 +1,32 @@
+<div class="flex flew-row flex-1 justify-between align-center bg-indigo-500 p-1">
+
+  <div class="flex flex-row justify-between items-center bg-white p-1 rounded-lg cursor-pointer">
+    <div class="bg-white flex flex-row px-2 items-center rounded-full h-12 w-12">
+      <img class="w-full h-full object-contain" src="https://cdn-icons-png.flaticon.com/128/1144/1144760.png" alt="">
+    </div>
+    <p class="text-black text-xl ml-2">Bienvenue Sysadmin</p>
+  </div>
+
+  <ul class="flex flex-row items-center text-xl text-pink-600 font-medium">
+    <li class="">
+      <a class="ml-4 p-2 text-white hover:text-indigo-500 hover:bg-white rounded-md" routerLink="agents">
+        <span class="pi pi-user mr-1 mt-1"></span>
+        Agents
+      </a>
+    </li>
+    <li class="">
+      <a class="ml-4 p-2 text-white hover:text-indigo-500 hover:bg-white rounded-md" routerLink="admins">
+        <span class="pi pi-home mr-1"></span>
+        Administrateurs
+      </a>
+    </li>
+    <li class="">
+      <a
+        (click)="logoutUser()"
+        class="ml-4 p-2 text-white hover:bg-red-400 bg-red-500 rounded-md cursor-pointer">
+        <span class="pi pi-sign-out mr-1 mt-1"></span>
+        Déconnexion
+      </a>
+    </li>
+  </ul>
+</div>

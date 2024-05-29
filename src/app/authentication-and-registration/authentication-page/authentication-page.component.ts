@@ -2,9 +2,9 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {AuthRegisterService} from "../../services/auth-register/auth-register.service";
 import {Router} from "@angular/router";
-import {AdminAuthenticationRequestDto} from "../../DTOs/AdminDto";
+import {AdminAuthenticationRequestDto, AdminAuthenticationResponseDto} from "../../DTOs/AdminDto";
 import {DOCUMENT, NgIf} from "@angular/common";
-import {RegieAuthenticationRequestDto} from "../../DTOs/RegieDto";
+import {RegieAuthenticationRequestDto, RegieAuthenticationResponseDto} from "../../DTOs/RegieDto";
 
 @Component({
   selector: 'app-authentication-page',
@@ -52,10 +52,11 @@ export class AuthenticationPageComponent implements OnInit {
 
   loginAdmin(){
     this._service.loginAdmin(this.admin).subscribe({
-      next : (response: any) => {
+      next : (response: AdminAuthenticationResponseDto) => {
         console.log(this.admin)
         console.log("Access token :"+ response.accessToken)
         localStorage.setItem("accessToken",response.accessToken)
+          localStorage.setItem("adminId",String(response.administrator.adminId))
         alert("Utilisateur authentifié avec succès !!")
         this._router.navigate(["/agents"]).then(r => {
           console.log("Utilisateur rédirigé vers la page de gestions de agents !!")
@@ -70,10 +71,11 @@ export class AuthenticationPageComponent implements OnInit {
   }
   loginRegie(){
     this._service.loginRegie(this.regie).subscribe({
-      next : (response: any) => {
+      next : (response: RegieAuthenticationResponseDto) => {
         console.log(this.regie)
         console.log("Access token :"+ response.accessToken)
         localStorage.setItem("accessToken",response.accessToken)
+        localStorage.setItem("regieId",String(response.regie.regieId))
         alert("Utilisateur authentifié avec succès !!")
         this._router.navigate(["/regies"]).then(r => {
           console.log("Utilisateur rédirigé vers la page de gestions de administrateurs !!")

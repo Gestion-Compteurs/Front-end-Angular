@@ -14,11 +14,11 @@ export class RegiesService {
   ) { }
   // Lister tous les agents de terrain de la régie
   listAllRegiesAgents(regieId: number):Observable<AgentInListAllAgentsDto[]>{
-    return this.http.get<AgentInListAllAgentsDto[]>(`${regieServiceAddress}/Regie/ListAllAgents/${regieId}`)
+    return this.http.get<AgentInListAllAgentsDto[]>(`${regieServiceAddress}/ListAllAgents/${regieId}`)
   }
   // Lister tous les administrateurs de la régie
   listAllRegiesAdmins(regieId: number) : Observable<AdminInListAllAdminsDto[]>{
-    return this.http.get<AdminInListAllAdminsDto[]>(`${regieServiceAddress}/Regie/ListAllAdministrateurs/${regieId}`)
+    return this.http.get<AdminInListAllAdminsDto[]>(`${regieServiceAddress}/ListAllAdministrateurs/${regieId}`)
   }
   // Débloquer le compte d'un administrateur
   unlockAdminAccount(regieId: number, adminId: number) : Observable<boolean>{

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {GestionAdminsComponent} from "./gestion-admins/gestion-admins.component";
-import {GestionAgentsComponent} from "./gestion-agents/gestion-agents.component";
 
 const routes: Routes = [
   {
@@ -11,10 +10,6 @@ const routes: Routes = [
   {
     path : 'admins',
     component : GestionAdminsComponent
-  },
-  {
-    path : 'agents',
-    component : GestionAgentsComponent
   },
 ];
 
