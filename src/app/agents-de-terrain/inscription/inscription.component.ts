@@ -20,15 +20,13 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
 export class InscriptionComponent {
   // L'agent à enregistrer
   agent$ :RegisterAgentDeTerrainRequestDto = {
-    agentId: 0,
     nom: "",
     prenom: "",
     cin: "",
-    email: "",
+    regieId: 0,
     dateDeNaissance: new Date(),
     civilite: "",
     dateEmbauche: new Date(),
-    password: "",
   }
   // Sa photo
   selectedFile: string | ArrayBuffer | null = null;

@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {RegisterAgentDeTerrainRequestDto, RegisterAgentDeTerrainResponseDto} from "../../DTOs/AgentDeTerrainDto";
+import {
+  ListerAgentDeTerrainResponseDto, ModifierAgentDeTerrainResponseDto, RechercherAgentDeTerrainResponseDto,
+  RegisterAgentDeTerrainRequestDto,
+  RegisterAgentDeTerrainResponseDto
+} from "../../DTOs/AgentDeTerrainDto";
 import {Observable} from "rxjs";
 import {agentsServiceAddress} from "../../environnement";
+import {ModifierCompteurDto} from "../../DTOs/CompteurDto";
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +22,19 @@ export class AgentsDeTerrainService {
     return this.http.post<RegisterAgentDeTerrainResponseDto>(`${agentsServiceAddress}`,agent)
   }
   // Lister tous les agents de terrain
-  listerAgentsDeTerrain(){
-
+  listerAgentsDeTerrain(): Observable<ListerAgentDeTerrainResponseDto[]>{
+    return this.http.get<ListerAgentDeTerrainResponseDto[]>(`${agentsServiceAddress}`)
   }
   // Rechercher un agent de terrain
-  rechercherAgentDeTerrain(){
-
+  rechercherAgentDeTerrain(agentId: number): Observable<RechercherAgentDeTerrainResponseDto>{
+    return this.http.get<RechercherAgentDeTerrainResponseDto>(`${agentsServiceAddress}/${agentId}`)
   }
   // Modifier un agent de terrain
-  modifierAgentDeTerrain(){
-
+  modifierAgentDeTerrain(agent: ModifierAgentDeTerrainResponseDto, agentId: number) : Observable<RechercherAgentDeTerrainResponseDto>{
+    return this.http.put<RechercherAgentDeTerrainResponseDto>(`${agentsServiceAddress}/${agentId}`,agent)
   }
   // Supprimer un agent de terrain
-  supprimerAgentDeTerrain(){
-
+  supprimerAgentDeTerrain(agentId: number): Observable<boolean>{
+    return this.http.delete<boolean>(`${agentsServiceAddress}/${agentId}`)
   }
 }

@@ -1,23 +1,24 @@
-import {Component, Inject, inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {AuthRegisterService} from "../../services/auth-register/auth-register.service";
 import {Router} from "@angular/router";
 import {AdminAuthenticationRequestDto} from "../../DTOs/AdminDto";
-import {DOCUMENT} from "@angular/common";
+import {DOCUMENT, NgIf} from "@angular/common";
 import {RegieAuthenticationRequestDto} from "../../DTOs/RegieDto";
 
 @Component({
   selector: 'app-authentication-page',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   templateUrl: './authentication-page.component.html',
   styleUrl: './authentication-page.component.css'
 })
 export class AuthenticationPageComponent implements OnInit {
-  _service: AuthRegisterService = inject(AuthRegisterService)
-  _router: Router = inject(Router)
+
+  isRegie: boolean = false;
 
   admin: AdminAuthenticationRequestDto = {
     email : '',
@@ -32,9 +33,10 @@ export class AuthenticationPageComponent implements OnInit {
   }
 
   constructor(
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private _router: Router,
+    private _service: AuthRegisterService
   ) {
-
   }
 
   ngOnInit(){
@@ -43,6 +45,11 @@ export class AuthenticationPageComponent implements OnInit {
       alert("Vous êtes déjà authentifié")
     })
   }
+
+  setIsRegie(){
+    this.isRegie = !this.isRegie
+  }
+
   loginAdmin(){
     this._service.loginAdmin(this.admin).subscribe({
       next : (response: any) => {
@@ -64,7 +71,7 @@ export class AuthenticationPageComponent implements OnInit {
   loginRegie(){
     this._service.loginRegie(this.regie).subscribe({
       next : (response: any) => {
-        console.log(this.admin)
+        console.log(this.regie)
         console.log("Access token :"+ response.accessToken)
         localStorage.setItem("accessToken",response.accessToken)
         alert("Utilisateur authentifié avec succès !!")

@@ -33,7 +33,7 @@ export class AuthRegisterService {
   }
 
   loginRegie(regieAuthenticationRequestDto:RegieAuthenticationRequestDto) : Observable<RegieAuthenticationResponseDto>  {
-    return this.http.post<RegieAuthenticationResponseDto>(`${identityServiceAddress}/authenticateAdminAndGetAccessToken`,regieAuthenticationRequestDto)
+    return this.http.post<RegieAuthenticationResponseDto>(`${identityServiceAddress}/authenticateRegieAndGetAccessToken`,regieAuthenticationRequestDto)
   }
 
   logoutUser(){

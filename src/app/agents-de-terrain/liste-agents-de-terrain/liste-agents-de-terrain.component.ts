@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {RouterLink} from "@angular/router";
-import {RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
+import {ListerAgentDeTerrainResponseDto, RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {NgForOf} from "@angular/common";
 
 @Component({
@@ -24,28 +24,26 @@ export class ListeAgentsDeTerrainComponent implements OnInit{
   }
 
   // La liste des agents à afficher
-  agents: RegisterAgentDeTerrainRequestDto[] = [
+  agents: ListerAgentDeTerrainResponseDto[] = [
     {
-      agentId: 0,
+      operateurId: 1,
       nom: "hassane",
       prenom: "mamane",
       cin: "ER567FNS2",
-      email: "hassane.mamane017@gmail.com",
+      regieId : 1,
       dateDeNaissance: new Date("15-01-1996"),
       civilite: "Monsieur",
       dateEmbauche: new Date("16-01-1996"),
-      password: "",
     },
     {
-      agentId: 1,
+      operateurId: 2,
       nom: "houssein",
       prenom: "mamane",
       cin: "ER567ERS2",
-      email: "hous.mamane012@gmail.com",
+      regieId: 1,
       dateDeNaissance: new Date("15-01-1996"),
       civilite: "Monsieur",
       dateEmbauche: new Date("16-01-1996"),
-      password: "",
     }
   ]
 
