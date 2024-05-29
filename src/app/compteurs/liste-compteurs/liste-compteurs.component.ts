@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
+import {RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {CompteurDto} from "../../DTOs/CompteurDto";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import {NgForOf} from "@angular/common";

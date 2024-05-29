@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
+import {RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 
@@ -29,7 +29,7 @@ export class DetailsModificationComponent{
     // Retrouver l'agent en question
   }
   // L'agent à modifier
-  agent$ :RegisterAgentDeTerrainDto = {
+  agent$ :RegisterAgentDeTerrainRequestDto = {
     agentId: 0,
     nom: "",
     prenom: "",

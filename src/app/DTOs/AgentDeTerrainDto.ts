@@ -1,15 +1,24 @@
-interface RegisterAgentDeTerrainDto {
-  agentId: number,
-  nom: string,
-  prenom: string,
-  cin: string,
-  email: string,
-  dateDeNaissance: Date,
-  civilite: string,
-  dateEmbauche: Date,
-  password: string,
+interface RegisterAgentDeTerrainRequestDto {
+  nom: string;
+  prenom: string;
+  regieId: number;
+  cin: string;
+  dateDeNaissance: string;
+  civilite: string;
+  dateEmbauche: string;
+}
+
+interface RegisterAgentDeTerrainResponseDto {
+  nom: string;
+  prenom: string;
+  regieId: number;
+  cin: string;
+  dateDeNaissance: string;
+  civilite: string;
+  dateEmbauche: string;
 }
 
 export {
-  RegisterAgentDeTerrainDto
+  RegisterAgentDeTerrainRequestDto,
+  RegisterAgentDeTerrainResponseDto
 }

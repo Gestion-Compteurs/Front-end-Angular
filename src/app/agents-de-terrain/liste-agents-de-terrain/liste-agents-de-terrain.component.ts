@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {RouterLink} from "@angular/router";
-import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
+import {RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {NgForOf} from "@angular/common";
 
 @Component({
@@ -24,7 +24,7 @@ export class ListeAgentsDeTerrainComponent implements OnInit{
   }
 
   // La liste des agents à afficher
-  agents: RegisterAgentDeTerrainDto[] = [
+  agents: RegisterAgentDeTerrainRequestDto[] = [
     {
       agentId: 0,
       nom: "hassane",

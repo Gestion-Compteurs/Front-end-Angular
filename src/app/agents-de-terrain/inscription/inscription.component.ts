@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {Observable} from "rxjs";
-import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
+import {RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 
@@ -19,7 +19,7 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
 })
 export class InscriptionComponent {
   // L'agent à enregistrer
-  agent$ :RegisterAgentDeTerrainDto = {
+  agent$ :RegisterAgentDeTerrainRequestDto = {
     agentId: 0,
     nom: "",
     prenom: "",

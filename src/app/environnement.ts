@@ -4,6 +4,8 @@ const addressRoot:string = `https://localhost:7058/api`
 const identityServiceAddress = `${addressRoot}/Identity`
 // La racine de toutes les adresses des requêtes sur les régies
 const regieServiceAddress = `${addressRoot}/Regie`
+// La racine de toutes les adresses des requêtes sur les agents de terrain
+const agentsServiceAddress = `${addressRoot}/Operateur`
 // La racine de toutes les adresses des requêtes sur les administrateurs
 const administrateurServiceAddress = `${addressRoot}/Administrateur`
 // La racine de toutes les adresses des requêtes sur les bâtiments
@@ -26,6 +28,7 @@ export {
   identityServiceAddress,
   regieServiceAddress,
   administrateurServiceAddress,
+  agentsServiceAddress,
   batimentsServiceAddress,
   cadransServiceAddress,
   compteursServiceAddress,
