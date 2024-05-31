@@ -42,4 +42,8 @@ export const routes: Routes = [
     loadChildren: () => import('../app/batiments/batiments.module')
       .then(m=>m.BatimentsModule)
   },
+  {
+    path: 'regie',
+    loadChildren: () => import('../app/regie/regie.module').then(m => m.RegieModule)
+  },
 ];
