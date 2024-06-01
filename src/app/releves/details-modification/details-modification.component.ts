@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
-import {RouterLink} from "@angular/router";
-import {ReleveDto} from "../../DTOs/ReleveDto";
+import {ActivatedRoute, RouterLink} from "@angular/router";
+import {modifierReleveDto, ReleveDto} from "../../DTOs/ReleveDto";
 import {FormsModule} from "@angular/forms";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
+import {RelevesService} from "../../services/releves/releves.service";
+import {modifierReleveCadranDto, ReleveCadranDto} from "../../DTOs/ReleveCadranDto";
 
 @Component({
   selector: 'app-details-modification',
@@ -20,46 +22,64 @@ import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
   templateUrl: './details-modification.component.html',
   styleUrl: './details-modification.component.css'
 })
-export class DetailsModificationComponent implements OnInit{
+export class DetailsModificationComponent {
+  // L'identifiant de la relève à modifier
+  releveId! : number
   // La relève
-  releve:ReleveDto = {
-    releveId: 1,
-    compteurId: 2,
-    batimentId: 15,
-    agentId: 42,
-    dateReleve: new Date(),
-    releveCadrans: [
-      {
-        cadranId : 1,
-        instanceCadranId: 1,
-        indexRoues: 1689
+  releve!:ReleveDto
+  constructor(
+    private route:ActivatedRoute,
+    private datePipe: DatePipe,
+    private _service: RelevesService
+  ) {
+    // L'identifiant de l'instance compteur
+    this.releveId = this.route.snapshot.params['releveId']
+    this.retrouverReleveEtSesRelevesCadrans(this.releveId)
+    console.log("L'identifiant de la relève à modifier : " + this.releveId)
+  }
+  retrouverReleveEtSesRelevesCadrans(releveId: number){
+    this._service.retrouverReleveEtSesRelevesCadrans(releveId).subscribe({
+      next : value => {
+        this.releve = value
+        console.log(`La relève que l'on consulte actuellement est ${this.releve}`)
       },
-      {
-        cadranId : 2,
-        instanceCadranId: 2,
-        indexRoues: 189
+      error : err => {
+        console.log(`Une erreur s'est produite lors de la recherche de la relève sur la page des détails : ${err}`)
       }
-    ]
+    })
   }
-  constructor(private datePipe: DatePipe) {
+  modifierReleve() {
+    let releveModifiee: modifierReleveDto = {
+      releveId : this.releve.releveId,
+      instanceCompteurId : this.releve.instanceCompteurId,
+      operateurId : this.releve.agentId,
+      dateReleve : this.releve.dateReleve,
+    }
+    this._service.modifierReleve(releveModifiee).subscribe({
+      next : value => {
+        this.releve =value
+        console.log(`Relève modifiée, la nouvelle valeur est ${this.releve}`)
+        this.retrouverReleveEtSesRelevesCadrans(this.releveId)
+      },
+      error: err => {
+        console.log(`Une erreur s'est produite lors de la modification de la relève ${err}`)
+      }
+    })
   }
-  ngOnInit(): void {
-    // Retrouver la relève
-
-  }
-
-  updateReleve() {
-
-  }
-
-  // Formattage de date
-  formatterDate(date:Date) : any {
-     // Format AAAA-MM-JJ
-    return this.datePipe.transform(date, 'yyyy-MM-dd');
-  }
-
-  updateReleveCadran() {
-    // Pas encore implémentée
-    console.log("Relève cadran updated")
+  modifierReleveCadran(releveCadranModifiee: ReleveCadranDto) {
+    let releveCadranModifieeAEnvoyer: modifierReleveCadranDto = {
+      releveCadranId: releveCadranModifiee.releveCadranId,
+      indexRoues: releveCadranModifiee.indexRoues,
+      prixWatt: releveCadranModifiee.prixWatt
+    }
+    this._service.modifierReleveCadran(releveCadranModifieeAEnvoyer).subscribe({
+      next : value => {
+        console.log(`Relève cadran modifiée, la nouvelle valeur est ${value}`)
+        this.retrouverReleveEtSesRelevesCadrans(this.releveId)
+      },
+      error: err => {
+        console.log(`Une erreur s'est produite lors de la modification de la relève cadran ${err}`)
+      }
+    })
   }
 }

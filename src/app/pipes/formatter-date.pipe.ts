@@ -8,7 +8,7 @@ import {DatePipe} from "@angular/common";
 export class FormatterDatePipe implements PipeTransform {
   transform(value: Date): any {
     if (value) {
-      const datePipe = new DatePipe('fr');
+      const datePipe = new DatePipe('en');
       return datePipe.transform(value, 'yyyy-MM-dd');
     }
     return null;

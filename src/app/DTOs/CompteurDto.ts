@@ -1,11 +1,32 @@
+import {CadranDto} from "./CadranDto";
+
 interface CompteurDto {
   compteurId: number,
   marque: string,
-  type: string,
-  capacite: number|null,
-  nombreCadran: number|null,
+  modele: string,
+  voltageMax: number,
+  anneeCreation: number,
+  typesCadrans: CadranDto[]
+}
+
+interface AjouterCompteurDto {
+  marque: string,
+  modele: string,
+  anneeCreation: number,
+  voltageMax: number,
+  typesCadrans: CadranDto[]
+
+}
+
+interface ModifierCompteurDto {
+  marque: string,
+  modele: string,
+  anneeCreation: number,
+  voltageMax: number
 }
 
 export {
-  CompteurDto
+  CompteurDto,
+  AjouterCompteurDto,
+  ModifierCompteurDto
 }

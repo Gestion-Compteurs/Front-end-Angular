@@ -1,3 +1,4 @@
+import {ReleveDto} from "./ReleveDto";
 import {InstanceCadranDto} from "./InstanceCadranDto";
 
 interface InstanceCompteurDto {
@@ -5,9 +6,17 @@ interface InstanceCompteurDto {
   batimentId : number,
   compteurId: number,
   dateInstallation : Date,
-  cadrans : InstanceCadranDto[]
+  instanceCadrans: InstanceCadranDto[],
+  releves: ReleveDto[]
+}
+
+interface AjouterInstanceCompteurDto {
+  batimentId: number,
+  compteurId: number,
+  dateInstallation: string
 }
 
 export {
+  AjouterInstanceCompteurDto,
   InstanceCompteurDto
 }

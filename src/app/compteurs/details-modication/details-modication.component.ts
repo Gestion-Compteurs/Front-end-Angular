@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CompteurDto } from '../../DTOs/CompteurDto';
+import {CompteurDto, ModifierCompteurDto} from '../../DTOs/CompteurDto';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
+import {CompteursService} from "../../services/compteurs/compteurs.service";
 
 @Component({
   selector: 'app-details-modication',
@@ -18,20 +19,55 @@ import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navba
   templateUrl: './details-modication.component.html',
   styleUrl: './details-modication.component.css'
 })
-export class DetailsModicationComponent implements OnInit{
-  ngOnInit(): void {
-    
-
-  }
-  // le compteur à modifier
+export class DetailsModicationComponent {
+  // L'identifiant du compteur concerné
+  compteurId! : number
+  // Le compteur dont on va voir ses détails et qui sera modifié
   compteur$ :CompteurDto = {
     compteurId: 0,
     marque: "",
-    type: "",
-    capacite: null,
-    nombreCadran: null,
+    modele: "",
+    voltageMax: 0,
+    anneeCreation: 0,
+    typesCadrans: [],
   }
-  updateCompteur(): void{
-    // Fonction pour modifier un compteur
+  constructor(
+    private route: ActivatedRoute,
+    private _router: Router,
+    private _service: CompteursService
+  ) {
+    this.compteurId = this.route.snapshot.params['compteurId']
+    this.retrouverCompteur(this.compteurId)
+  }
+  // Retrouver le compteur que l'on veut consulter et/ou modifier
+  retrouverCompteur(idCompteur: number){
+    this._service.rechercherCompteur(idCompteur).subscribe({
+      next: value=> {
+        this.compteur$ = value
+        console.log(`Compteur retrouvé depuis la base de données ${this.compteur$}`)
+      },
+      error: err => {
+        console.log(`Une erreur s'est produite durant la recherche du compteur : ${err}`)
+      }
+    })
+  }
+  // Mettre à jour un compteur
+  updateCompteur(compteurId:number){
+    let modificationCompteurDto: ModifierCompteurDto = {
+      marque: this.compteur$.marque,
+      modele: this.compteur$.modele,
+      anneeCreation: this.compteur$.anneeCreation,
+      voltageMax: this.compteur$.voltageMax
+    }
+    this._service.modifierCompteur(compteurId,modificationCompteurDto).subscribe({
+      next : value => {
+        this._router.navigate(['/compteurs']).then(r=> {
+          console.log(`Compteur modifié : ${value}`)
+        })
+      },
+      error: err => {
+        console.log(`Une erreur s'est produite lors de la modification du compteur ${err}`)
+      }
+    })
   }
 }

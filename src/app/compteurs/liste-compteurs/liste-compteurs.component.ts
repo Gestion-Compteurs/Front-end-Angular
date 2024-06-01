@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import {RegisterAgentDeTerrainDto} from "../../DTOs/AgentDeTerrainDto";
+import {RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {CompteurDto} from "../../DTOs/CompteurDto";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import {NgForOf} from "@angular/common";
 import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {RouterLink} from "@angular/router";
+import {CompteursService} from "../../services/compteurs/compteurs.service";
 
 @Component({
-  selector: 'app-liste-compteurs',
+  selector: 'app-liste-compteurs$',
   standalone: true,
   imports: [
     CustomNavbarComponent,
@@ -19,37 +20,35 @@ import {RouterLink} from "@angular/router";
   styleUrl: './liste-compteurs.component.css'
 })
 export class ListeCompteursComponent {
-  ngOnInit() {
-    // Remplir la liste des compteurs
-
+  constructor(
+    private _service: CompteursService
+  ) {
+    this.retrouverListeCompteurs()
   }
 
-  // La liste des compteurs à afficher
-  compteurs: CompteurDto[] = [
-    {
-      compteurId : 0,
-      marque: "Ingelec",
-      type : "type1",
-      capacite: 15,
-      nombreCadran: 8,
-    },
-    {
-      compteurId : 1,
-      marque: "Montelec",
-      type : "type2",
-      capacite: 20,
-      nombreCadran: 12,
-    },
-    {
-      compteurId : 3,
-      marque: "Montelec",
-      type : "type3",
-      capacite: 25,
-      nombreCadran: 22,
-    }
-  ]
+  // La liste des compteurs$ à afficher
+  compteurs$!: CompteurDto[]
+  // Retrouver la liste des compteurs
+  retrouverListeCompteurs(){
+    this._service.listerCompteurs().subscribe({
+      next: value => {
+        this.compteurs$ = value
+      },
+      error: err => {
+        console.log(`Une erreur s"est produite dans le listage des compteurs ${err}`)
+      }
+    })
+  }
+  // Supprimer un compteur
   deleteCompteur(compteurId:number){
-    
+    this._service.supprimerCompteur(compteurId).subscribe({
+      next: value => {
+        console.log(`Compteur supprimé avec succès: ${value}`)
+        this.retrouverListeCompteurs()
+      },
+      error: err => {
+        console.log(`Une erreur s'est produite pendant la suppression du compteur : ${err}`)
+      }
+    })
   }
-
 }

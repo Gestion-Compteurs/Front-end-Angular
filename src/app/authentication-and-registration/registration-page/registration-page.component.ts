@@ -1,7 +1,7 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthRegisterService} from "../../services/auth-register/auth-register.service";
 import {Router} from "@angular/router";
-import {AdminRegistrationDto} from "../../DTOs/AdminDto";
+import {AdminRegistrationRequestDto} from "../../DTOs/AdminDto";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -15,19 +15,20 @@ import {FormsModule} from "@angular/forms";
 })
 export class RegistrationPageComponent implements OnInit {
 
-  _service: AuthRegisterService = inject(AuthRegisterService)
-  _router: Router = inject(Router)
-
-  user: AdminRegistrationDto = {
-    Nom:'',
-    Prenom:'',
-    DateDeNaissance:new Date(),
-    email: '',
-    password: '',
-    Confirmpassword:'',
+  admin: AdminRegistrationRequestDto = {
+    nom: "",
+    prenom: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    regieId: 0,
+    dateDeNaissance: new Date(),
   };
 
-  constructor() {
+  constructor(
+    private _service: AuthRegisterService,
+    private _router: Router,
+  ) {
   }
 
   ngOnInit() {
@@ -37,17 +38,17 @@ export class RegistrationPageComponent implements OnInit {
     })
   }
 
-  registerUser() {
-    this._service.registerUser(this.user).subscribe({
+  registerAdmin() {
+    this._service.registerAdmin(this.admin).subscribe({
       next: () => {
-        console.log(this.user)
+        console.log(this.admin)
         console.log("Utilisateur inscrit avec succès !!")
         this._router.navigate(["/auth"]).then(() => {
           console.log("Utilisateur rédirigé vers la page d'authentification !!")
         })
       },
       error: () => {
-        console.log(this.user)
+        console.log(this.admin)
         console.log("Une erreur s'est produite !!")
       }
     })

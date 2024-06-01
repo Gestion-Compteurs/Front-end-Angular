@@ -13,6 +13,11 @@ export const routes: Routes = [
       .then(m=>m.AuthenticationAndRegistrationModule)
   },
   {
+    path : 'regies',
+    loadChildren: () => import('../app/regies/regies.module')
+      .then(m=>m.RegiesModule)
+  },
+  {
     path : 'agents',
     loadChildren: () => import('../app/agents-de-terrain/agents-de-terrain.module')
       .then(m=>m.AgentsDeTerrainModule)
@@ -33,17 +38,8 @@ export const routes: Routes = [
       .then(m=>m.RelevesModule)
   },
   {
-    path : 'instances-compteurs',
-    loadChildren: () => import('../app/instance-compteur/instance-compteur.module')
-      .then(m=>m.InstanceCompteurModule)
-  },
-  {
     path : 'batiments',
     loadChildren: () => import('../app/batiments/batiments.module')
       .then(m=>m.BatimentsModule)
-  },
-  {
-    path: 'regie',
-    loadChildren: () => import('../app/regie/regie.module').then(m => m.RegieModule)
   },
 ];

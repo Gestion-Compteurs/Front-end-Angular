@@ -11,7 +11,7 @@
     <div class="flex flex-row">
       <div class="flex flex-1 w-3/5 flex-col ">
         <form
-          (ngSubmit)="AjouterCompteur()"
+          (ngSubmit)="ajouterCompteur()"
           class = "flex flex-col p-3 gap-y-2"
         >
           <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
@@ -20,36 +20,104 @@
                    class="border-white w-full text-md focus:outline-none"
                    [(ngModel)]="compteur$.marque"
                    [ngModelOptions]="{standalone: true}"
-                   placeholder="marque de compteur">
+                   placeholder="Marque">
           </div>
 
           <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
             <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-compass "></span>
             <input type="text"
                    class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="compteur$.type"
+                   [(ngModel)]="compteur$.modele"
                    [ngModelOptions]="{standalone: true}"
-                   placeholder="type de compteur">
+                   placeholder="Modèle">
           </div>
 
           <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
             <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-bolt "></span>
             <input type="text"
                    class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="compteur$.capacite"
+                   [(ngModel)]="compteur$.voltageMax"
                    [ngModelOptions]="{standalone: true}"
-                   placeholder="capacite">
+                   placeholder="Voltage maximum">
           </div>
+
           <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-sitemap"></span>
+            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-bolt "></span>
             <input type="text"
                    class="border-white w-full text-md focus:outline-none"
-                   [(ngModel)]="compteur$.nombreCadran"
+                   [(ngModel)]="nombreCadrans$"
                    [ngModelOptions]="{standalone: true}"
-                   placeholder="nombre cadrans">
+                   placeholder="Nombre de cadrans">
+            <p
+              class="cursor-pointer bg-indigo-500 text-white p-1
+                       text-2xl hover:bg-white hover:text-indigo-500"
+              (click)="creerTypesCadransARemplir(this.nombreCadrans$)"
+            >
+              Remplir
+            </p>
           </div>
 
 
+          <div
+            *ngIf="nombreCadrans$>0"
+            class="bg-white"
+          >
+            <div class="flex overflow-auto flex-col md:flex">
+              <table class="">
+                <thead>
+                <tr class="bg-white border-b-2">
+                  <th class="p-2 text-left">Nombre roues</th>
+                  <th class="p-2 text-left">Prix watt</th>
+                  <th class="p-2 text-left">Heure activation</th>
+                  <th class="p-2 text-left">Heure arrêt</th>
+                  <th class="p-2 text-left">Modèle</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let typeCadran of compteur$.typesCadrans, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+                    <td>
+                      <input
+                        type="text"
+                        class="p-2 text-left"
+                        [(ngModel)]="typeCadran.nombreRoues"
+                        [ngModelOptions] = "{standalone:true}"
+                      >
+                    </td>
+                    <td>
+                      <input
+                        class="p-2 text-left"
+                        [(ngModel)]="typeCadran.prixWatt"
+                        [ngModelOptions] = "{standalone:true}"
+                      >
+                    </td>
+                    <td>
+                      <input
+                        type="time"
+                        class="p-2 text-left"
+                        [(ngModel)]="typeCadran.heureActivation"
+                        [ngModelOptions] = "{standalone:true}"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="time"
+                        class="p-2 text-left"
+                        [(ngModel)]="typeCadran.heureArret"
+                        [ngModelOptions] = "{standalone:true}"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        class="p-2 text-left"
+                        [(ngModel)]="typeCadran.cadranModel"
+                        [ngModelOptions] = "{standalone:true}"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
           <button type="submit" class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
             <span class="p-2">Ajouter</span>

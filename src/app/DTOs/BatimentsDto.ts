@@ -1,8 +1,11 @@
+import {InstanceCompteurDto} from "./InstanceCompteurDto";
+
 interface BatimentsDto {
   batimentId: number,
   adresse:string,
-  nombre_etages:number|null,
-  type_batiment:string,
+  nombreEtages:number,
+  typeBatiment:string,
+  instanceCompteursDtos: InstanceCompteurDto[]
 }
 
 export {

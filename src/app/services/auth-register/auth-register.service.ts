@@ -2,8 +2,15 @@ import {Inject, inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {AdminAuthenticationDto, AdminAuthenticationResponseDto, AdminRegistrationDto} from "../../DTOs/AdminDto";
+import {
+  AdminAuthenticationRequestDto,
+  AdminAuthenticationResponseDto,
+  AdminRegistrationRequestDto,
+  AdminRegistrationResponseDto
+} from "../../DTOs/AdminDto";
+import {identityServiceAddress, administrateurServiceAddress} from "../../environnement";
 import {DOCUMENT} from "@angular/common";
+import {RegieAuthenticationRequestDto, RegieAuthenticationResponseDto} from "../../DTOs/RegieDto";
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +19,21 @@ export class AuthRegisterService {
 
   private http = inject(HttpClient)
 
-  // Le chemin vers l'API ASP.NET
-  //apiUrl:string = "http://localhost:5163"
-  apiUrl:string = "https://localhost:7058";
+  constructor(
+    private _router: Router,
+    @Inject(DOCUMENT) private document: Document
+  ) { }
 
-  constructor(private _router: Router, @Inject(DOCUMENT) private document: Document) {
-
+  registerAdmin(user:AdminRegistrationRequestDto) : Observable<AdminRegistrationResponseDto>  {
+    return this.http.post<AdminRegistrationResponseDto>(`${administrateurServiceAddress}/register`,user)
   }
 
-  registerUser(user:AdminRegistrationDto) : Observable<AdminRegistrationDto>  {
-    return this.http.post<AdminRegistrationDto>(`${this.apiUrl}/register`,user)
+  loginAdmin(user:AdminAuthenticationRequestDto) : Observable<AdminAuthenticationResponseDto>  {
+    return this.http.post<AdminAuthenticationResponseDto>(`${identityServiceAddress}/authenticateAdminAndGetAccessToken`,user)
   }
 
-  loginUser(user:AdminAuthenticationDto) : Observable<AdminAuthenticationResponseDto>  {
-    return this.http.post<AdminAuthenticationResponseDto>(`${this.apiUrl}/login`,user)
+  loginRegie(regieAuthenticationRequestDto:RegieAuthenticationRequestDto) : Observable<RegieAuthenticationResponseDto>  {
+    return this.http.post<RegieAuthenticationResponseDto>(`${identityServiceAddress}/authenticateRegieAndGetAccessToken`,regieAuthenticationRequestDto)
   }
 
   logoutUser(){

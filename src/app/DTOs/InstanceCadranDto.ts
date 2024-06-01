@@ -1,9 +1,10 @@
 interface InstanceCadranDto {
-  instanceCadranId : number,
   cadranId: number,
+  instanceCadranId: number,
+  instanceCompteurId: number,
   indexRoues: number
 }
 
 export {
-  InstanceCadranDto
+  InstanceCadranDto,
 }

@@ -25,9 +25,10 @@
             <thead>
             <tr class="bg-white border-b-2">
               <th class="p-2 text-left">ID Bâtiment</th>
-              <th class="p-2 text-left">Adresse</th>
+              <th class="p-2 text-left">adresse</th>
               <th class="p-2 text-left">Nombre étages</th>
               <th class="p-2 text-left">Type batiment</th>
+              <th class="p-2 text-left">Supprimer</th>
               <th class="p-2 text-left">Détails</th>
             </tr>
             </thead>
@@ -35,8 +36,15 @@
               <tr *ngFor="let batiment of batiments, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ batiment.batimentId }}</td>
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ batiment.adresse }}</td>
-                <td class="p-2 text-left">{{ batiment.nombre_etages}}</td>
-                <td class="p-2 text-left">{{ batiment.type_batiment }}</td>
+                <td class="p-2 text-left">{{ batiment.nombreEtages}}</td>
+                <td class="p-2 text-left">{{ batiment.typeBatiment }}</td>
+                <td class="p-2 text-left">
+                  <div
+                    (click)="deleteBatiment(batiment.batimentId)"
+                    class="flex flex-row justify-center items-center w-10 h-10 cursor-pointer text-white bg-red-500 hover:bg-white hover:text-red-500 text-xl p-2 rounded-full">
+                    <span class="pi pi-trash"></span>
+                  </div>
+                </td>
                 <td class="p-2 text-left">
                   <div
                     (click)="voirDetailsBatiment(batiment.batimentId)"
@@ -67,17 +75,37 @@
             </div>
 
             <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-              <span class="p-1 text-indigo-500 w-full mr-2 text-xl font-bold">Adresse bâtiment</span>
+              <span class="p-1 text-indigo-500 w-full mr-2 text-xl font-bold">Type bâtiment</span>
+              <input type="text"
+                     [disabled]="false"
+                     class="border-white text-md w-full focus:outline-none"
+                     [(ngModel)]="batimentActif.typeBatiment"
+                     [ngModelOptions]="{standalone: true}"
+                     placeholder="Type Bâtiment">
+            </div>
+
+            <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+              <span class="p-1 text-indigo-500 w-full mr-2 text-xl font-bold">Nombre étages</span>
+              <input type="text"
+                     [disabled]="false"
+                     class="border-white text-md w-full focus:outline-none"
+                     [(ngModel)]="batimentActif.nombreEtages"
+                     [ngModelOptions]="{standalone: true}"
+                     placeholder="Nombre étages">
+            </div>
+
+            <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
+              <span class="p-1 text-indigo-500 w-full mr-2 text-xl font-bold">adresse bâtiment</span>
               <input type="text"
                      [disabled]="false"
                      class="border-white text-md focus:outline-none w-full"
                      [(ngModel)]="batimentActif.adresse"
                      [ngModelOptions]="{standalone: true}"
-                     placeholder="Adresse bâtiment">
+                     placeholder="adresse bâtiment">
               <p
                 class="cursor-pointer bg-indigo-500 text-white p-1
                        text-2xl hover:bg-white hover:text-indigo-500"
-                (click)="updateAdresseBatiment(batimentActif.batimentId)"
+                (click)="updateBatiment(batimentActif.batimentId)"
               >
                 Modifier
               </p>
@@ -95,19 +123,20 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let instanceCompteur of batimentActif.instanceCompteur, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+              <tr *ngFor="let instanceCompteur of batimentActif.instanceCompteursDtos, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ instanceCompteur.instanceCompteurId }}</td>
                 <td class="p-2 text-left font-bold text-blue-600 hover:underline">
                   <a
+                    class="cursor-pointer"
                     [routerLink]="['/compteurs/details-modification',instanceCompteur.compteurId]"
                   >
                     {{ instanceCompteur.compteurId }}
                   </a>
                 </td>
-                <td class="p-2 text-left">{{ formatterDate(instanceCompteur.dateInstallation) }}</td>
+                <td class="p-2 text-left">{{ instanceCompteur.dateInstallation | formatterDate }}</td>
                 <td class="p-2 text-left">
                   <div
-                    [routerLink]="['']"
+                    [routerLink]="['/releves/instance-compteur', instanceCompteur.instanceCompteurId]"
                     class="flex flex-row justify-center items-center w-10 h-10 cursor-pointer text-xl p-2 rounded-full hover:bg-indigo-500 hover:text-white bg-white text-indigo-500 ">
                     <span class="pi pi-link"></span>
                   </div>
@@ -115,6 +144,11 @@
               </tr>
               </tbody>
             </table>
+
+            <a class="flex flex-row items-center justify-center text-xl text-indigo-500 bg-white hover:bg-indigo-500 hover:text-white rounded-md m-2 p-1" [routerLink]="['/batiments/ajouter-instances-compteur',this.batimentActif.batimentId]">
+              <span class="pi pi-plus mr-1"></span>
+              Ajouter nouvelle instance
+            </a>
 
 
           </div>

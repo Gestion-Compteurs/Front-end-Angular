@@ -6,16 +6,16 @@ import {DetailsModificationComponent} from "./details-modification/details-modif
 
 const routes: Routes = [
   {
-    path:"",
+    path:"instance-compteur/:idInstanceCompteur",
     component:ListeRelevesComponent
   },
   {
-    path:"ajouter-nouveau",
-    component: AjoutRelevesComponent
+    path:"instance-compteur/details-modification/:releveId",
+    component:DetailsModificationComponent
   },
   {
-    path:"details-modification/:releveId",
-    component:DetailsModificationComponent
+    path:"instance-compteur/ajouter-nouveau/:idInstanceCompteur",
+    component: AjoutRelevesComponent
   },
 ];
 

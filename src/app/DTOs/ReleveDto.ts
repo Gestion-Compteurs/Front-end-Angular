@@ -1,24 +1,33 @@
-import {InstanceCadranDto} from "./InstanceCadranDto";
+import {ReleveCadranDto} from "./ReleveCadranDto";
 
 interface ReleveDto {
   releveId: number,
-  compteurId: number|null,
-  batimentId: number|null,
-  agentId: number|null,
+  instanceCompteurId: number,
+  agentId: number,
   dateReleve: Date,
-  releveCadrans: InstanceCadranDto[]
+  releveCadrans: ReleveCadranDto[]
 }
 
-interface RegisterReleveDto {
+interface ajouterReleveDto {
+  instanceCompteurId: number,
+  operateurId: number,
+}
+
+interface confirmerAjoutReleveDto {
   releveId: number,
-  compteurId: number|null,
-  batimentId: number|null,
-  agentId: number|null,
+  releveCadrans : ReleveCadranDto[]
+}
+
+interface modifierReleveDto  {
+  releveId: number,
   dateReleve: Date,
-  releveCadrans: []
+  instanceCompteurId: number,
+  operateurId: number
 }
 
 export {
   ReleveDto,
-  RegisterReleveDto
+  ajouterReleveDto,
+  confirmerAjoutReleveDto,
+  modifierReleveDto
 }

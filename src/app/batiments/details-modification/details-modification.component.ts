@@ -4,6 +4,8 @@ import {NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {AjoutBatimentDto} from "../../DTOs/BatimentDto";
+import {BatimentsService} from "../../services/batiments/batiments.service";
 @Component({
   selector: 'app-details-modification',
   standalone: true,
@@ -18,19 +20,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './details-modification.component.css'
 })
 export class DetailsModificationComponent implements OnInit{
-    ngOnInit(): void {
+  // C'est pas la peine de toucher ce fichier pour le moment
+  ngOnInit(): void {
+  }
+  // le batiment à modifier
+  constructor(
+    private _service: BatimentsService
+  ) {
+    // Il faut remplacer le bâtiment en dur par le bâtiment retrouvé depuis l'api
+  }
 
-
-    }
-    // le batiment à modifier
-    batiment$ :BatimentsDto = {
-      batimentId: 0,
-      adresse: "",
-      nombre_etages: 0,
-      type_batiment: "",
-
-    }
-    updateBatiment(): void{
-      // Fonction pour modifier un batiment
-    }
+  batiment$ :AjoutBatimentDto = {
+    adresse: "",
+    nombreEtages: 0,
+    typeBatiment: "",
+  }
+  updateBatiment(): void{
+    // Fonction pour modifier un batiment
+  }
 }
