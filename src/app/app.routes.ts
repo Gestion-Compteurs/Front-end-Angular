@@ -4,8 +4,8 @@ import {SidenavComponent} from "./components/sidenav/sidenav.component";
 export const routes: Routes = [
   {
     path : '',
-    loadChildren: () => import('../app/batiments/batiments-routing.module')
-      .then(m=>m.BatimentsRoutingModule)
+    loadChildren: () => import('../app/authentication-and-registration/authentication-and-registration.module')
+      .then(m=>m.AuthenticationAndRegistrationModule)
   },
   {
     path : 'auth',
