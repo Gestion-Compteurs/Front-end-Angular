@@ -1,7 +1,7 @@
-<div class="flex flex-col justify-around items-center m-4 p-4 h-auto w-auto rounded-lg bg-indigo-500">
-  <p class="text-white font-bold text-xl p-2">Authentification</p>
+<div class="flex flex-col justify-around items-center m-4 p-4 h-auto w-auto rounded-lg bg-indigo-500" style="width: 400px;">
+  <p class="text-white font-bold text-3xl p-2">Authentification</p>
 
-  <p class="text-white font-bold text-xl p-2 mt-2">
+  <p class="text-white font-bold text-xl p-2 mt-8">
     {{isRegie? "Régie" : "Administrateur"}}
   </p>
 
@@ -18,7 +18,7 @@
         placeholder="Your email address"
         class="p-2 text-md rounded-lg">
     </div>
-    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-6">
       <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-lock"></span>
       <input
         [(ngModel)]="regie.password"
@@ -28,11 +28,11 @@
         class="p-2 text-md rounded-lg">
     </div>
     
-    <div class="flex flex-row mt-12 justify-end">
+    <div class="flex flex-row mt-12 justify-end " >
       <button
         type="submit"
-        class="ml-2 mt-2 bg-indigo-600 hover:bg-white hover:border-2 hover:border-indigo-800 rounded-lg">
-        <p class="text-white hover:text-indigo-600 font-bold p-2">Envoyer</p>
+        class="ml-2 mt-2 bg-indigo-700 hover:bg-white hover:border-2 hover:border-indigo-700 rounded-lg">
+        <p class="text-white hover:text-indigo-700 font-bold p-2">Envoyer</p>
       </button>
       <button
         type="reset"
@@ -55,7 +55,7 @@
         placeholder="Your email address"
         class="p-2 text-md rounded-lg">
     </div>
-    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-6">
       <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-lock"></span>
       <input
         [(ngModel)]="admin.password"
@@ -68,8 +68,8 @@
     <div class="flex flex-row mt-12 justify-end">
       <button
         type="submit"
-        class="ml-2 mt-2 bg-indigo-600 hover:bg-white hover:border-2 hover:border-indigo-600 rounded-lg">
-        <p class="text-white hover:text-indigo-600 font-bold p-2">Envoyer</p>
+        class="ml-2 mt-2 bg-indigo-700 hover:bg-white hover:border-2 hover:border-indigo-700 rounded-lg">
+        <p class="text-white hover:text-indigo-700 font-bold p-2">Envoyer</p>
       </button>
       <button
         type="reset"
