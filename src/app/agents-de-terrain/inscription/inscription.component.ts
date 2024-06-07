@@ -44,7 +44,7 @@ export class InscriptionComponent {
     this._service.ajouterAgentDeTerrain(this.agent$).subscribe({
       next : value => {
         console.log(`Agent de terrain ajouté : ${value}`)
-        this._router.navigate(['/']).then(r =>
+        this._router.navigate(['/agents']).then(r =>
           console.log("Agent de terrain ajouté avec succès et redirection effectuée !!")
         )
       },

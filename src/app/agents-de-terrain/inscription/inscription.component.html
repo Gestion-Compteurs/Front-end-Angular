@@ -71,7 +71,13 @@
                  [ngModelOptions]="{standalone: true}"
                  placeholder="Date d'embauche de l'agent">
         </div>
-
+        <div class="h-full flex flex-row items-center w-2/5 justify-center">
+          <label for="photo" class="mr-2 font-bold">Sélectionner une photo:</label>
+          <input type="file" id="photo" name="photo" (change)="onFileSelected($event)" class="mr-2">
+          <img *ngIf="selectedFile" [src]="selectedFile" class="p-4" alt="Photo de l'agent">
+        </div>
+        
+    
         <button type="submit" class="flex flex-row justify-center items-center border-2 border-indigo-500 bg-indigo-500 text-white text-3xl">
           <span class="p-2">Inscrire</span>
           <span class="pi pi-arrow-right"></span>
@@ -81,15 +87,7 @@
 
     </div>
 
-    <div class="h-full flex flex-col w-2/5 flex-row justify-center items-center">
-
-      <label for="photo">Selectionner une photo:</label>
-      <input type="file" id="photo" name="photo" (change)="onFileSelected($event)">
-
-      <img *ngIf="selectedFile" [src]="selectedFile"  class="p-4" alt="Photo de l'agent">
-
-    </div>
-
+   
   </div>
 
 </div>

@@ -21,8 +21,8 @@ import {CadranDto} from "../../DTOs/CadranDto";
 })
 export class AjoutCompteursComponent {
   compteur$ : AjouterCompteurDto = {
-    marque: "nd",
-    modele: "nd",
+    marque: "",
+    modele: "",
     anneeCreation: 0,
     voltageMax: 0,
     typesCadrans: []
