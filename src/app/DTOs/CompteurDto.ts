@@ -6,6 +6,7 @@ interface CompteurDto {
   modele: string,
   voltageMax: number,
   anneeCreation: number,
+  photo?: string;
   typesCadrans: CadranDto[]
 }
 
@@ -14,6 +15,7 @@ interface AjouterCompteurDto {
   modele: string,
   anneeCreation: number,
   voltageMax: number,
+  photo?: string,
   typesCadrans: CadranDto[]
 
 }
@@ -22,7 +24,8 @@ interface ModifierCompteurDto {
   marque: string,
   modele: string,
   anneeCreation: number,
-  voltageMax: number
+  voltageMax: number,
+  photo?: string,
 }
 
 export {

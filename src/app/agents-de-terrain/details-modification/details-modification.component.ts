@@ -32,6 +32,7 @@ export class DetailsModificationComponent{
     dateDeNaissance: new Date(),
     civilite: "",
     dateEmbauche: new Date(),
+    photo: "",
   }
   constructor(
     private route: ActivatedRoute,
@@ -45,8 +46,9 @@ export class DetailsModificationComponent{
   }
   // Sa photo
   selectedFile: string | ArrayBuffer | null = null;
-    // Retrouver le compteur que l'on veut consulter et/ou modifier
+    // Retrouver le compteur que l'on veut consulter 
     retrouverAgentDeTerrain(agentId: number){
+      this.agent$.photo = this.selectedFile as string;
       this._service.rechercherAgentDeTerrain(agentId).subscribe({
         next: value=> {
           this.agent$ = value
@@ -57,7 +59,8 @@ export class DetailsModificationComponent{
         }
       })
     }
-  updateAgentDeTerrain(): void{
+   
+  updateAgentDeTerrain(agentId:number){
     // Fonction pour modifier un agent de terrain
     let modificationAgentDeTerrainDto: ModifierAgentDeTerrainResponseDto = {
       nom: this.agent$.nom,
@@ -67,10 +70,11 @@ export class DetailsModificationComponent{
       dateDeNaissance:this.agent$.dateDeNaissance,
       civilite:this.agent$.civilite,
       dateEmbauche:this.agent$.dateEmbauche,
+      photo:this.agent$.photo,
     }
-    this._service. modifierAgentDeTerrain(modificationAgentDeTerrainDto,this.agentId).subscribe({
+    this._service.modifierAgentDeTerrain(modificationAgentDeTerrainDto,agentId).subscribe({
       next : value => {
-        this._router.navigate(['/agents-de-terrain']).then(r=> {
+        this._router.navigate(['/agents']).then(r=> {
           console.log(`Agent de terrain modifié : ${value}`)
         })
       },
@@ -79,7 +83,8 @@ export class DetailsModificationComponent{
       }
     })
   }
-
+  
+  
   
 
   onFileSelected(event: any) {

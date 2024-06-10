@@ -32,27 +32,37 @@ export class ListeAgentsDeTerrainComponent {
   
   retrouverListeAgentsDeTerrain(){
     this._service.listerAgentsDeTerrain().subscribe({
-      next: value => {
-        this.agents$ = value
+      next : (result) => {
+        this.agents$ = result
       },
-      error: err => {
-        console.log(`Une erreur s"est produite dans le listage des agents de terrain ${err}`)
+      error : error => {
+        console.log(error)
       }
     })
   }
+  
+  
+     
+    
   // Fonction pour supprimer les agents
-  deleteAgentDeTerrain(agentId:number){
-
-  this._service.supprimerAgentDeTerrain(agentId).subscribe({
-    next: value => {
-      console.log(`Agent de terrain supprimé avec succès: ${value}`)
-      this.retrouverListeAgentsDeTerrain()
-    },
-    error: err => {
-      console.log(`Une erreur s'est produite pendant la suppression de l'agent de terrain : ${err}`)
+  deleteAgentDeTerrain(agentId: number) {
+    // Affichage de la boîte de dialogue de confirmation
+    if (confirm("Êtes-vous sûr de vouloir supprimer cet agent de terrain ?")) {
+      this._service.supprimerAgentDeTerrain(agentId).subscribe({
+        next: value => {
+          console.log(`Agent de terrain supprimé avec succès: ${value}`)
+          this.retrouverListeAgentsDeTerrain();
+        },
+        error: err => {
+          console.log(`Une erreur s'est produite pendant la suppression de l'agent de terrain : ${err}`);
+        }
+      });
+    } else {
+      console.log("Suppression annulée.");
     }
-  })
-}
+  }
+  
+
 
 
 }

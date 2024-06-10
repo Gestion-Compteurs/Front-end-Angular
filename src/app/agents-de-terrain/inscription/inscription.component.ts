@@ -34,6 +34,8 @@ export class InscriptionComponent {
     dateDeNaissance: new Date(),
     civilite: "",
     dateEmbauche: new Date(),
+    photo: "",
+    
   }
 
   
@@ -41,6 +43,7 @@ export class InscriptionComponent {
   selectedFile: string | ArrayBuffer | null = null;
   registerAgentDeTerrain(): void{
     // Fonction pour enregistrer un agent de terrain
+    this.agent$.photo = this.selectedFile as string;
     this._service.ajouterAgentDeTerrain(this.agent$).subscribe({
       next : value => {
         console.log(`Agent de terrain ajouté : ${value}`)
