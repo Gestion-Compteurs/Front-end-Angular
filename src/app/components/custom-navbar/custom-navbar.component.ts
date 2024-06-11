@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {AuthRegisterService} from "../../services/auth-register/auth-register.service";
 
 @Component({
   selector: 'app-custom-navbar',
@@ -11,9 +12,14 @@ import {RouterLink} from "@angular/router";
   styleUrl: './custom-navbar.component.css'
 })
 export class CustomNavbarComponent {
+  constructor(private _service: AuthRegisterService, private _router : Router) {
+  }
 
   logoutUser(){
-
+    this._service.logoutUser()
+    this._router.navigate(["/auth"]).then(r => {
+      console.log("Utilisateur déconnecté")
+    })
   }
 
 }

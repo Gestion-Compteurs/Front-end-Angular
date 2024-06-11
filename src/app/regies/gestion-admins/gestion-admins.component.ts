@@ -64,7 +64,7 @@ export class GestionAdminsComponent {
         alert(`Compte administrateur avec l'identifiant ${adminId} activé`)
       },
       error : err => {
-        console.log(`Une erreur s'est produite dans le déblocage du compte administrateur : ${err}`)
+        console.log(`Une erreur s'est produite dans le déblocage du compte administrateur : ${JSON.stringify(err)}`)
       }
     })
   }

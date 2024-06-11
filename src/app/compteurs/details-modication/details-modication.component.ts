@@ -29,6 +29,7 @@ export class DetailsModicationComponent {
     modele: "",
     voltageMax: 0,
     anneeCreation: 0,
+    nombreCadrans : 0,
     typesCadrans: [],
   }
   constructor(

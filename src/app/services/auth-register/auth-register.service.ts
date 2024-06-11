@@ -39,7 +39,7 @@ export class AuthRegisterService {
   logoutUser(){
     const localStorage = document.defaultView?.localStorage;
     if(localStorage){
-      localStorage.setItem("accessToken","")
+      localStorage.clear()
     }
     this._router.navigate(['']).then(r =>{
       alert("Utilisateur déconnecté")

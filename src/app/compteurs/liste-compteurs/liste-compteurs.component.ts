@@ -33,6 +33,7 @@ export class ListeCompteursComponent {
     this._service.listerCompteurs().subscribe({
       next: value => {
         this.compteurs$ = value
+        console.log(`Liste des compteurs ${JSON.stringify(this.compteurs$)}`)
       },
       error: err => {
         console.log(`Une erreur s"est produite dans le listage des compteurs ${err}`)

@@ -20,7 +20,6 @@
             <thead>
             <tr class="bg-white border-b-2">
               <th class="p-2 text-left">Identifiant</th>
-              <th class="p-2 text-left">Image</th>
               <th class="p-2 text-left">Marque</th>
               <th class="p-2 text-left">Modèle</th>
               <th class="p-2 text-left">Voltage maximum</th>
@@ -31,13 +30,11 @@
 
             <tr *ngFor="let compteur of compteurs$, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
               <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ compteur.compteurId }}</td>
-              <td class="p-2 items-center">
-                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29ubmVzfGVufDB8fDB8fHww" alt="Employee photo" class="w-10 h-10 object-cover rounded-full border-2 border-cyan-900">
-              </td>
+
               <td class="p-2 text-left ">{{ compteur.marque }}</td>
               <td class="p-2 text-left">{{ compteur.modele }}</td>
               <td class="p-2 text-left">{{ compteur.voltageMax }}</td>
-              <td class="p-2 text-left">{{ compteur.typesCadrans.length }}</td>
+              <td class="p-2 text-left">{{ compteur.nombreCadrans }}</td>
               <td>
                 <div class="flex flex-row gap-x-2">
                   <a
