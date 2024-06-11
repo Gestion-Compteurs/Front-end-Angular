@@ -87,6 +87,7 @@ export class ListeBatimentsComponent {
 
   // Supprimer un bâtiment
   deleteBatiment(batimentId:number){
+    if (confirm("Êtes-vous sûr de vouloir supprimer ce bâtiment?")) {
     this._service.deleteBatiment(batimentId).subscribe({
       next: value => {
         console.log(`Bâtiment avec identifiant ${batimentId} supprimé avec succèes`)
@@ -97,4 +98,5 @@ export class ListeBatimentsComponent {
       }
     })
   }
+}
 }

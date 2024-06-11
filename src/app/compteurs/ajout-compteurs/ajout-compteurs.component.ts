@@ -25,6 +25,7 @@ export class AjoutCompteursComponent {
     modele: "",
     anneeCreation: 0,
     voltageMax: 0,
+    photo: "",
     typesCadrans: []
   }
   // Le nombre de cadrans que possède le compteur
@@ -43,17 +44,21 @@ export class AjoutCompteursComponent {
         prixWatt: 0,
         heureActivation: "nd",
         heureArret: "nd",
-        cadranModel: "nd"
+        cadranModel: "nd",
+        
       }
     }
     console.log(`Le compteur à renseigner : ${JSON.stringify(this.compteur$)}`)
   }
+
+  selectedFile: string | ArrayBuffer | null = null;
 
   ajouterCompteur(): void{
     for(let i: number = 0; i< this.compteur$.typesCadrans.length; i++){
       this.compteur$.typesCadrans[i].heureActivation = `${this.compteur$.typesCadrans[i].heureActivation}:00`
       this.compteur$.typesCadrans[i].heureArret = `${this.compteur$.typesCadrans[i].heureArret}:00`
     }
+    this.compteur$.photo = this.selectedFile as string;
     this._service.ajouterCompteur(this.compteur$).subscribe({
       next: value => {
         this._router.navigate(['/compteurs'])
@@ -65,5 +70,17 @@ export class AjoutCompteursComponent {
         console.log(`Une erreur s'est produite lors de l'ajout du compteur : ${JSON.stringify(err)}`)
       }
     })
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.selectedFile = reader.result;
+        console.log("Selected file "+ this.selectedFile)
+      };
+    }
   }
 }

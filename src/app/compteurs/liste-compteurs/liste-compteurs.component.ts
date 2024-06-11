@@ -41,6 +41,7 @@ export class ListeCompteursComponent {
   }
   // Supprimer un compteur
   deleteCompteur(compteurId:number){
+    if (confirm("Êtes-vous sûr de vouloir supprimer ce compteur ?")) {
     this._service.supprimerCompteur(compteurId).subscribe({
       next: value => {
         console.log(`Compteur supprimé avec succès: ${value}`)
@@ -49,6 +50,8 @@ export class ListeCompteursComponent {
       error: err => {
         console.log(`Une erreur s'est produite pendant la suppression du compteur : ${err}`)
       }
+      
     })
   }
+}
 }
