@@ -34,7 +34,7 @@ export class AjoutBatimentComponent {
     this._service.ajouterBatiment(this.batiments$).subscribe({
       next : value => {
         console.log(`Bâtiment ajouté : ${value}`)
-        this._router.navigate(['/']).then(r =>
+        this._router.navigate(['/batiments']).then(r =>
           console.log("Bâtiment ajouté avec succès et redirection effectuée !!")
         )
       },

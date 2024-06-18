@@ -20,24 +20,26 @@
             <thead>
             <tr class="bg-white border-b-2">
               <th class="p-2 text-left">Identifiant</th>
+              <th class="p-2 text-left">Photo</th>
               <th class="p-2 text-left">Marque</th>
               <th class="p-2 text-left">Modèle</th>
               <th class="p-2 text-left">Voltage maximum</th>
               <th class="p-2 text-left">Nombre cadrans</th>
-              <th class="p-2 text-left">Détails</th>
+              <th class="p-2 text-left">Actions</th>
             </tr>
             </thead>
 
             <tr *ngFor="let compteur of compteurs$, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
               <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ compteur.compteurId }}</td>
+              <td class="p-2 items-center">
+                <img [src]="compteur.photo" alt="Photo de compteur" class="w-10 h-10 object-cover rounded-full border-2 border-cyan-900">
+              </td>
               <td class="p-2 text-left ">{{ compteur.marque }}</td>
               <td class="p-2 text-left">{{ compteur.modele }}</td>
               <td class="p-2 text-left">{{ compteur.voltageMax }}</td>
               <td class="p-2 text-left">{{ compteur.nombreCadrans }}</td>
 
-              <td class="p-2 items-center">
-                <img [src]="compteur.photo" alt="Photo de compteur" class="w-10 h-10 object-cover rounded-full border-2 border-cyan-900">
-              </td>
+
 
               <td>
                 <div class="flex flex-row gap-x-2">

@@ -20,7 +20,10 @@
         >
 
           <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
-            <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-users"></span>
+            <div class="flex flex-row gap-0.5 w-1/5">
+              <span class="text-indigo-500 text-xl font-bold pi pi-users"></span>
+              <p class="text-indigo-500 text-xl font-bold"> Identifiant réléveur</p>
+            </div>
             <input type="text"
                    class="border-white w-full text-md focus:outline-none"
                    [(ngModel)]="releve$.operateurId"

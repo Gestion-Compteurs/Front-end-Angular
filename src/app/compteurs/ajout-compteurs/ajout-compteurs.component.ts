@@ -21,8 +21,8 @@ import {CadranDto} from "../../DTOs/CadranDto";
 })
 export class AjoutCompteursComponent {
   compteur$ : AjouterCompteurDto = {
-    marque: "nd",
-    modele: "nd",
+    marque: "",
+    modele: "",
     anneeCreation: 0,
     voltageMax: 0,
     photo: "",
@@ -42,9 +42,9 @@ export class AjoutCompteursComponent {
       this.compteur$.typesCadrans[i] = {
         nombreRoues: 0,
         prixWatt: 0,
-        heureActivation: "nd",
-        heureArret: "nd",
-        cadranModel: "nd"
+        heureActivation: "",
+        heureArret: "",
+        cadranModel: ""
       }
     }
     console.log(`Le compteur à renseigner : ${JSON.stringify(this.compteur$)}`)

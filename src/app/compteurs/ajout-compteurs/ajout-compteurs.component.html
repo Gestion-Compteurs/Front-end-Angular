@@ -40,14 +40,8 @@
                    [ngModelOptions]="{standalone: true}"
                    placeholder="Voltage maximum">
           </div>
-<<<<<<< HEAD
-=======
-          <div class="h-full flex flex-row items-center w-2/5 justify-center">
-            <label for="photo" class="mr-2 font-bold">Sélectionner une photo:</label>
-            <input type="file" id="photo" name="photo" (change)="onFileSelected($event)" class="mr-2">
-            <img *ngIf="selectedFile" [src]="selectedFile" class="p-4" alt="Photo de compteur">
-          </div>
->>>>>>> nihad3/adding_services
+
+
 
           <div class="flex flex-row bg-white border-2 m-1 border-indigo-500">
             <span class="p-1 pl-1 text-indigo-500 text-xl font-bold pi pi-bolt "></span>
@@ -63,6 +57,12 @@
             >
               Remplir
             </p>
+          </div>
+
+          <div class="h-full flex flex-row items-center w-2/5 justify-center">
+            <label for="photo" class="mr-2 font-bold">Sélectionner une photo:</label>
+            <input type="file" id="photo" name="photo" (change)="onFileSelected($event)" class="mr-2">
+            <img *ngIf="selectedFile" [src]="selectedFile" class="p-4" alt="Photo de compteur">
           </div>
 
 
