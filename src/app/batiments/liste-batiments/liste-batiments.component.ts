@@ -87,10 +87,7 @@ export class ListeBatimentsComponent {
 
   // Supprimer un bâtiment
   deleteBatiment(batimentId:number){
-<<<<<<< HEAD
-=======
     if (confirm("Êtes-vous sûr de vouloir supprimer ce bâtiment?")) {
->>>>>>> nihad3/adding_services
     this._service.deleteBatiment(batimentId).subscribe({
       next: value => {
         console.log(`Bâtiment avec identifiant ${batimentId} supprimé avec succèes`)
@@ -101,8 +98,5 @@ export class ListeBatimentsComponent {
       }
     })
   }
-<<<<<<< HEAD
-=======
 }
->>>>>>> nihad3/adding_services
 }

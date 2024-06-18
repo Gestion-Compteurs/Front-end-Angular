@@ -24,40 +24,8 @@ export class ListeAgentsDeTerrainComponent {
   ) {
     this.retrouverListeAgentsDeTerrain()
   }
-  
-
   // La liste des agents à afficher
-<<<<<<< HEAD
-  agents: ListerAgentDeTerrainResponseDto[] = [
-    {
-      operateurId: 1,
-      nom: "hassane",
-      prenom: "mamane",
-      cin: "ER567FNS2",
-      regieId : 1,
-      dateDeNaissance: new Date("15-01-1996"),
-      civilite: "Monsieur",
-      dateEmbauche: new Date("16-01-1996"),
-    },
-    {
-      operateurId: 2,
-      nom: "houssein",
-      prenom: "mamane",
-      cin: "ER567ERS2",
-      regieId: 1,
-      dateDeNaissance: new Date("15-01-1996"),
-      civilite: "Monsieur",
-      dateEmbauche: new Date("16-01-1996"),
-    }
-  ]
-
-  // Fonction pour supprimer les agents
-  deleteAgentDeTerrain(agentId:number){
-
-=======
-  agents$!: ListerAgentDeTerrainResponseDto[] 
-  
-  
+  agents$!: ListerAgentDeTerrainResponseDto[]
   retrouverListeAgentsDeTerrain(){
     this._service.listerAgentsDeTerrain().subscribe({
       next : (result) => {
@@ -67,12 +35,7 @@ export class ListeAgentsDeTerrainComponent {
         console.log(error)
       }
     })
->>>>>>> nihad3/adding_services
   }
-  
-  
-     
-    
   // Fonction pour supprimer les agents
   deleteAgentDeTerrain(agentId: number) {
     // Affichage de la boîte de dialogue de confirmation
@@ -90,8 +53,4 @@ export class ListeAgentsDeTerrainComponent {
       console.log("Suppression annulée.");
     }
   }
-  
-
-
-
 }

@@ -34,14 +34,10 @@ export class InscriptionComponent {
     dateDeNaissance: new Date(),
     civilite: "",
     dateEmbauche: new Date(),
-<<<<<<< HEAD
-=======
     photo: "",
-    
->>>>>>> nihad3/adding_services
   }
 
-  
+
   // Sa photo
   selectedFile: string | ArrayBuffer | null = null;
   registerAgentDeTerrain(): void{
@@ -59,9 +55,6 @@ export class InscriptionComponent {
       }
     })
   }
-
-  
-
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {

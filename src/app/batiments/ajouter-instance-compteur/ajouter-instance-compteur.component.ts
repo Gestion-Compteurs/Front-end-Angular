@@ -4,8 +4,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AjouterInstanceCompteurDto} from "../../DTOs/InstanceCompteurDto";
 import {InstancesCompteursService} from "../../services/instances-compteurs/instances-compteurs.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AjouterCompteurDto} from "../../DTOs/CompteurDto";
-
 @Component({
   selector: 'app-ajouter-instance-compteur',
   standalone: true,

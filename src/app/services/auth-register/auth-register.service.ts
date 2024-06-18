@@ -45,17 +45,8 @@ export class AuthRegisterService {
       alert("Utilisateur déconnecté")
     })
   }
-
-  /*isLoggedIn(){
+  isLoggedIn(){
     let authenticated = localStorage.getItem("accessToken");
     return !(authenticated == null || authenticated == "");
-  }*/
-  isLoggedIn(): boolean {
-    if (typeof localStorage !== 'undefined') {
-      return !!localStorage.getItem('token'); // Or whatever your logic is to check login status
-    } else {
-      console.warn('localStorage is not available.');
-      return false;
-    }
   }
 }

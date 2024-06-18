@@ -15,5 +15,4 @@ export class SidenavComponent {
   searchId: string = ""
   // Nom recherché
   searchName: string = ""
-
 }

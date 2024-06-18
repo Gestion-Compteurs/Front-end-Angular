@@ -34,11 +34,7 @@ export class AjoutBatimentComponent {
     this._service.ajouterBatiment(this.batiments$).subscribe({
       next : value => {
         console.log(`Bâtiment ajouté : ${value}`)
-<<<<<<< HEAD
         this._router.navigate(['/']).then(r =>
-=======
-        this._router.navigate(['/batiments']).then(r =>
->>>>>>> nihad3/adding_services
           console.log("Bâtiment ajouté avec succès et redirection effectuée !!")
         )
       },

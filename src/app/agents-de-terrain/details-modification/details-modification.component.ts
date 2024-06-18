@@ -1,13 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
-<<<<<<< HEAD
-import {RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
-import {ActivatedRoute, RouterLink} from "@angular/router";
-=======
 import {ModifierAgentDeTerrainResponseDto, RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
->>>>>>> nihad3/adding_services
 import {CustomNavbarComponent} from "../../components/custom-navbar/custom-navbar.component";
 import { AgentsDeTerrainService } from '../../services/agents-de-terrain/agents-de-terrain.service';
 
@@ -27,17 +22,6 @@ import { AgentsDeTerrainService } from '../../services/agents-de-terrain/agents-
 export class DetailsModificationComponent{
   // L'identifiant de l'agent concerné
   agentId! : number
-<<<<<<< HEAD
-  constructor(
-    private route: ActivatedRoute
-  ) {
-    // Retrouver l'identifiant depuis la route
-    this.agentId = this.route.snapshot.params['agentId']
-    // Retrouver l'agent en question
-  }
-=======
-  
->>>>>>> nihad3/adding_services
   // L'agent à modifier
   agent$ :RegisterAgentDeTerrainRequestDto = {
     nom: "",
@@ -47,8 +31,6 @@ export class DetailsModificationComponent{
     dateDeNaissance: new Date(),
     civilite: "",
     dateEmbauche: new Date(),
-<<<<<<< HEAD
-=======
     photo: "",
   }
   constructor(
@@ -60,11 +42,10 @@ export class DetailsModificationComponent{
     this.agentId = this.route.snapshot.params['agentId']
     this.retrouverAgentDeTerrain(this.agentId)
     // Retrouver l'agent en question
->>>>>>> nihad3/adding_services
   }
   // Sa photo
   selectedFile: string | ArrayBuffer | null = null;
-    // Retrouver le compteur que l'on veut consulter 
+    // Retrouver le compteur que l'on veut consulter
     retrouverAgentDeTerrain(agentId: number){
       this.agent$.photo = this.selectedFile as string;
       this._service.rechercherAgentDeTerrain(agentId).subscribe({
@@ -77,7 +58,7 @@ export class DetailsModificationComponent{
         }
       })
     }
-   
+
   updateAgentDeTerrain(agentId:number){
     // Fonction pour modifier un agent de terrain
     let modificationAgentDeTerrainDto: ModifierAgentDeTerrainResponseDto = {
@@ -101,10 +82,6 @@ export class DetailsModificationComponent{
       }
     })
   }
-  
-  
-  
-
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
