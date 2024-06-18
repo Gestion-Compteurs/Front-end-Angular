@@ -5,6 +5,7 @@ import {RouterLink} from "@angular/router";
 import {ListerAgentDeTerrainResponseDto, RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {NgForOf} from "@angular/common";
 import { AgentsDeTerrainService } from '../../services/agents-de-terrain/agents-de-terrain.service';
+import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
 
 @Component({
   selector: 'app-liste-agents-de-terrain',
@@ -13,7 +14,8 @@ import { AgentsDeTerrainService } from '../../services/agents-de-terrain/agents-
     CustomNavbarComponent,
     SidenavComponent,
     RouterLink,
-    NgForOf
+    NgForOf,
+    FormatterDatePipe
   ],
   templateUrl: './liste-agents-de-terrain.component.html',
   styleUrl: './liste-agents-de-terrain.component.css'
