@@ -41,6 +41,12 @@
                  placeholder="Voltage maximum">
         </div>
 
+        <div class="h-full flex flex-row items-center w-2/5 justify-center">
+          <label for="photo" class="mr-2 font-bold">Sélectionner une photo:</label>
+          <input type="file" id="photo" name="photo" (change)="onFileSelected($event)" class="mr-2">
+          <img *ngIf="selectedFile" [src]="selectedFile" class="p-4" alt="Photo de l'agent">
+        </div>
+
         <button
           [routerLink]="['/compteurs']"
           type="button" class="flex flex-row justify-center items-center border-2 border-red-500 bg-red-500 text-white text-3xl">

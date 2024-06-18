@@ -20,26 +20,49 @@
           <table class="">
             <thead>
             <tr class="bg-white border-b-2">
-              <th class="p-2 text-left">CIN</th>
-              <th class="p-2 text-left">Photo</th>
-              <th class="p-2 text-left">Prénom</th>
+              <th class="p-2 text-left">Id agent</th>
               <th class="p-2 text-left">Nom</th>
+              <th class="p-2 text-left">Prénom</th>
+              <th class="p-2 text-left">Id régie</th>
+              <th class="p-2 text-left">CIN</th>
+              <th class="p-2 text-left">Civilité</th>
+              <th class="p-2 text-left">Date de naissance</th>
+              <th class="p-2 text-left">Date d'embauche</th>
+              <th class="p-2 text-left">Photo</th>
               <th class="p-2 text-left">Actions</th>
             </tr>
             </thead>
+<<<<<<< HEAD
             <tr *ngFor="let agent of agents, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
               <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ agent.operateurId }}</td>
               <td class="p-2 items-center">
                 <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29ubmVzfGVufDB8fDB8fHww" alt="Employee photo" class="w-10 h-10 object-cover rounded-full border-2 border-cyan-900">
               </td>
+=======
+            <tr *ngFor="let agent of agents$, let i=index" class="space-x-1 text-sm border-b-2 {{i%2==0?'bg-blue-300':'bg-white'}} ">
+              <td class="p-2 text-left font-bold text-blue-600 hover:underline">{{ agent.operateurId }}</td>
+              
+>>>>>>> nihad3/adding_services
               <td class="p-2 text-left ">{{ agent.prenom }}</td>
               <td class="p-2 text-left">{{ agent.nom }}</td>
+              <td class="p-2 text-left">{{ agent.regieId }}</td>
+              <td class="p-2 text-left">{{ agent.cin}}</td>
+              <td class="p-2 text-left">{{ agent.civilite}}</td>
+              <td class="p-2 text-left">{{ agent.dateDeNaissance }}</td>
+              <td class="p-2 text-left">{{ agent.dateEmbauche }}</td>
+              <td class="p-2 items-center">
+                <img [src]="agent.photo" alt="Photo de l'agent" class="w-10 h-10 object-cover rounded-full border-2 border-cyan-900">
+              </td>
               <td>
 
 
                 <div class="flex flex-row gap-x-2">
                   <a
+<<<<<<< HEAD
                     [routerLink]="['details-modification',agent]"
+=======
+                    [routerLink]="['details-modification',agent.operateurId]"
+>>>>>>> nihad3/adding_services
                     class="flex justify-center items-center font-bold text-xl cursor-pointer bg-indigo-500 border-indigo-500 text-white hover:bg-white hover:text-indigo-500 hover:border-white rounded-full border-2 p-1 w-12 h-12">
                     <span class="pi pi-file-edit"></span>
                   </a>

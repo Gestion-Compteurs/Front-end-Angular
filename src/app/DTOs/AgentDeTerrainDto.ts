@@ -8,6 +8,7 @@ interface RegisterAgentDeTerrainRequestDto {
   dateDeNaissance: Date | string;
   civilite: string;
   dateEmbauche: Date | string;
+  photo?: string;
 }
 
 interface RegisterAgentDeTerrainResponseDto {
@@ -18,6 +19,7 @@ interface RegisterAgentDeTerrainResponseDto {
   dateDeNaissance: Date | string;
   civilite: string;
   dateEmbauche: Date | string;
+  photo?: string;
 }
 
 interface RechercherAgentDeTerrainResponseDto {
@@ -41,6 +43,7 @@ interface ListerAgentDeTerrainResponseDto {
   dateDeNaissance: Date | string;
   civilite: string;
   dateEmbauche: Date | string;
+  photo?: string;
 }
 
 interface ModifierAgentDeTerrainResponseDto {
@@ -51,6 +54,7 @@ interface ModifierAgentDeTerrainResponseDto {
   dateDeNaissance: Date | string;
   civilite: string;
   dateEmbauche: Date | string;
+  photo?: string;
 }
 
 

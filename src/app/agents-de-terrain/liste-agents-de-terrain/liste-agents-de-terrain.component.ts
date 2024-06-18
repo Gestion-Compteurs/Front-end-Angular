@@ -4,6 +4,7 @@ import {SidenavComponent} from "../../components/sidenav/sidenav.component";
 import {RouterLink} from "@angular/router";
 import {ListerAgentDeTerrainResponseDto, RegisterAgentDeTerrainRequestDto} from "../../DTOs/AgentDeTerrainDto";
 import {NgForOf} from "@angular/common";
+import { AgentsDeTerrainService } from '../../services/agents-de-terrain/agents-de-terrain.service';
 
 @Component({
   selector: 'app-liste-agents-de-terrain',
@@ -17,13 +18,16 @@ import {NgForOf} from "@angular/common";
   templateUrl: './liste-agents-de-terrain.component.html',
   styleUrl: './liste-agents-de-terrain.component.css'
 })
-export class ListeAgentsDeTerrainComponent implements OnInit{
-  ngOnInit() {
-    // Remplir la liste des agents
-
+export class ListeAgentsDeTerrainComponent {
+  constructor(
+    private _service: AgentsDeTerrainService
+  ) {
+    this.retrouverListeAgentsDeTerrain()
   }
+  
 
   // La liste des agents à afficher
+<<<<<<< HEAD
   agents: ListerAgentDeTerrainResponseDto[] = [
     {
       operateurId: 1,
@@ -50,7 +54,43 @@ export class ListeAgentsDeTerrainComponent implements OnInit{
   // Fonction pour supprimer les agents
   deleteAgentDeTerrain(agentId:number){
 
+=======
+  agents$!: ListerAgentDeTerrainResponseDto[] 
+  
+  
+  retrouverListeAgentsDeTerrain(){
+    this._service.listerAgentsDeTerrain().subscribe({
+      next : (result) => {
+        this.agents$ = result
+      },
+      error : error => {
+        console.log(error)
+      }
+    })
+>>>>>>> nihad3/adding_services
   }
+  
+  
+     
+    
+  // Fonction pour supprimer les agents
+  deleteAgentDeTerrain(agentId: number) {
+    // Affichage de la boîte de dialogue de confirmation
+    if (confirm("Êtes-vous sûr de vouloir supprimer cet agent de terrain ?")) {
+      this._service.supprimerAgentDeTerrain(agentId).subscribe({
+        next: value => {
+          console.log(`Agent de terrain supprimé avec succès: ${value}`)
+          this.retrouverListeAgentsDeTerrain();
+        },
+        error: err => {
+          console.log(`Une erreur s'est produite pendant la suppression de l'agent de terrain : ${err}`);
+        }
+      });
+    } else {
+      console.log("Suppression annulée.");
+    }
+  }
+  
 
 
 

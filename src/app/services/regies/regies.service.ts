@@ -22,10 +22,18 @@ export class RegiesService {
   }
   // Débloquer le compte d'un administrateur
   unlockAdminAccount(regieId: number, adminId: number) : Observable<boolean>{
+<<<<<<< HEAD
     return this.http.put<boolean>(`${regieServiceAddress}/unlockAdministrateur/${adminId}/${regieId}`,{})
   }
   // Bloquer le compte d'un administrateur
   lockAdminAccount(regieId: number, adminId: number) : Observable<boolean>{
     return this.http.put<boolean>(`${regieServiceAddress}/lockAdministrateur/${adminId}/${regieId}`,{})
+=======
+    return this.http.post<boolean>(`${regieServiceAddress}/UnlockAdministrateur/${adminId}/${regieId}`,{})
+  }
+  // Bloquer le compte d'un administrateur
+  lockAdminAccount(regieId: number, adminId: number) : Observable<boolean>{
+    return this.http.post<boolean>(`${regieServiceAddress}/lockAdministrateur/${adminId}/${regieId}`,{})
+>>>>>>> nihad3/adding_services
   }
 }

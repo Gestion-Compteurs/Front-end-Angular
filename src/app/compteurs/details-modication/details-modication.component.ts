@@ -40,6 +40,7 @@ export class DetailsModicationComponent {
     this.compteurId = this.route.snapshot.params['compteurId']
     this.retrouverCompteur(this.compteurId)
   }
+  selectedFile: string | ArrayBuffer | null = null;
   // Retrouver le compteur que l'on veut consulter et/ou modifier
   retrouverCompteur(idCompteur: number){
     this._service.rechercherCompteur(idCompteur).subscribe({
@@ -58,8 +59,10 @@ export class DetailsModicationComponent {
       marque: this.compteur$.marque,
       modele: this.compteur$.modele,
       anneeCreation: this.compteur$.anneeCreation,
-      voltageMax: this.compteur$.voltageMax
+      voltageMax: this.compteur$.voltageMax,
+      photo:this.compteur$.photo
     }
+    this.compteur$.photo = this.selectedFile as string;
     this._service.modifierCompteur(compteurId,modificationCompteurDto).subscribe({
       next : value => {
         this._router.navigate(['/compteurs']).then(r=> {
@@ -70,5 +73,18 @@ export class DetailsModicationComponent {
         console.log(`Une erreur s'est produite lors de la modification du compteur ${err}`)
       }
     })
+  }
+
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.selectedFile = reader.result;
+        console.log("Selected file "+ this.selectedFile)
+      };
+    }
   }
 }

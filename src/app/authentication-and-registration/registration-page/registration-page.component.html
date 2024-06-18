@@ -1,35 +1,75 @@
-<div class="flex flex-col justify-around items-center m-4 p-4 h-auto w-auto rounded-lg bg-indigo-500">
-  <p class="text-white font-bold text-xl p-2">Inscription</p>
+<div class="flex flex-col justify-around items-center m-4 p-4 h-auto w-80 rounded-lg bg-indigo-500" style="width: 400px;">
 
+<<<<<<< HEAD
   <form (ngSubmit)="registerAdmin()">
     <div class="flex flex-row items-center bg-white rounded-lg pr-6">
+=======
+
+  <p class="text-white font-bold text-3xl p-2">Inscription</p>
+
+  <form (ngSubmit)="registerAdmin()">
+
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-user"></span>
+      <input type="text"
+             [(ngModel)]="admin.nom"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="Your first name" class="p-2 text-md rounded-lg">
+    </div>
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-user"></span>
+      <input type="text"
+             [(ngModel)]="admin.prenom"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="Your last name" class="p-2 text-md rounded-lg">
+    </div>
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-calendar"></span>
+      <input type="date"
+             [(ngModel)]="admin.dateDeNaissance"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="Your birthday" class="p-2 text-md rounded-lg">
+    </div>
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-address-book"></span>
+      <input type="text"
+             [(ngModel)]="admin.regieId"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="regie id" class="p-2 text-md rounded-lg">
+    </div>
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+>>>>>>> nihad3/adding_services
       <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-envelope"></span>
       <input type="text"
              [(ngModel)]="admin.email"
              [ngModelOptions]="{standalone: true}"
              placeholder="Your email address" class="p-2 text-md rounded-lg">
     </div>
+ 
 
     <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
-      <span class="p-2 pl-1 text-red-500 text-xl font-bold pi pi-shield"></span>
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-lock"></span>
       <input type="password"
              [(ngModel)]="admin.password"
              [ngModelOptions]="{standalone: true}"
              placeholder="Your password" class="p-2 text-md rounded-lg">
     </div>
+    <div class="flex flex-row items-center bg-white rounded-lg pr-6 mt-4">
+      <span class="p-2 pl-1 text-indigo-500 text-xl font-bold pi pi-lock"></span>
+      <input type="password"
+             [(ngModel)]="admin.confirmPassword"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="Confirm your password" class="p-2 text-md rounded-lg">
+    </div>
 
-    <div class="flex flex-row mt-12 justify-end">
+    <div class="flex flex-row items-center mt-12 justify-end pr-6 mt-4 ">
       <button
         type="submit"
-        class="ml-2 mt-2 bg-green-600 hover:bg-white hover:border-2 hover:border-green-600 rounded-lg">
-        <p class="text-white hover:text-green-600 font-bold p-2">Envoyer</p>
+        class="ml-2 mt-2  bg-indigo-700 hover:bg-white hover:border-2 hover:border-indigo-700 rounded-lg w-60">
+        <p class="text-white hover:text-indigo-700 font-bold p-2 text-2xl" >Envoyer</p>
       </button>
 
-      <button
-        type="reset"
-        class="ml-2 mt-2 bg-red-600 hover:bg-white hover:border-2 hover:border-red-600 rounded-lg">
-        <p class="text-white hover:text-red-600 font-bold p-2">Réinitialiser</p>
-      </button>
+      
     </div>
   </form>
 
