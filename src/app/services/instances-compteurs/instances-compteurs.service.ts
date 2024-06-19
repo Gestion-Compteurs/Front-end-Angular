@@ -22,4 +22,8 @@ export class InstancesCompteursService {
   ajouterInstanceCompteur(ajouterInstanceCompteurDto: AjouterInstanceCompteurDto): Observable<BatimentDto>{
     return this.http.post<BatimentDto>(`${batimentsServiceAddress}/ajouterInstanceCompteur`,ajouterInstanceCompteurDto)
   }
+  // Désinstaller une instance compteur
+  desinstallerInstance(instanceCompteurId: number): Observable<boolean> {
+
+  }
 }

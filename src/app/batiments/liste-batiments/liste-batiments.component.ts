@@ -9,6 +9,7 @@ import {FormatterDatePipe} from "../../pipes/formatter-date.pipe";
 import {BatimentsService} from "../../services/batiments/batiments.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {BatimentsDto} from "../../DTOs/BatimentsDto";
+import {InstancesCompteursService} from "../../services/instances-compteurs/instances-compteurs.service";
 @Component({
   selector: 'app-liste-batiments',
   standalone: true,
@@ -32,7 +33,8 @@ export class ListeBatimentsComponent {
   batimentActif! : BatimentsDto
   constructor(
     private datePipe:DatePipe,
-    private _service: BatimentsService
+    private _service: BatimentsService,
+    private _icService: InstancesCompteursService
   ) {
     // Utilisation des services
     this.retrouverListeBatiments()
@@ -88,15 +90,31 @@ export class ListeBatimentsComponent {
   // Supprimer un bâtiment
   deleteBatiment(batimentId:number){
     if (confirm("Êtes-vous sûr de vouloir supprimer ce bâtiment?")) {
-    this._service.deleteBatiment(batimentId).subscribe({
-      next: value => {
-        console.log(`Bâtiment avec identifiant ${batimentId} supprimé avec succèes`)
-        this.retrouverListeBatiments()
-      },
-      error: err => {
-        console.log(`Erreur lors de la suppression du bâtiment ${err}`)
-      }
-    })
+      this._service.deleteBatiment(batimentId).subscribe({
+        next: value => {
+          console.log(`Bâtiment avec identifiant ${batimentId} supprimé avec succèes`)
+          this.retrouverListeBatiments()
+        },
+        error: err => {
+          console.log(`Erreur lors de la suppression du bâtiment ${err}`)
+        }
+      })
+    }
   }
-}
+  supprimerInstanceCompteur(instanceCompteurId: number) {
+    if(confirm("Êtes-vous sûr de vouloir désintaller cette instance ? Toutes ses rélèves seront perdues")){
+      this._icService.desinstallerInstance(instanceCompteurId).subscribe({
+        next: value => {
+          if(value){
+            alert(`L'instance compteur a été désinstallée avec succès `)
+          } else {
+            alert(`L'instance compteur n'a pas été désinstallée suite à une erreur, contactez le fournisseur !`)
+          }
+        },
+        error: err => {
+          console.log(`Erreur lors de la désinstallation de l'instance compteur ${JSON.stringify(err)}`)
+        }
+      })
+    }
+  }
 }
