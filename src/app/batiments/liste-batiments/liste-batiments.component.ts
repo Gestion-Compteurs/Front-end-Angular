@@ -107,6 +107,7 @@ export class ListeBatimentsComponent {
         next: value => {
           if(value){
             alert(`L'instance compteur a été désinstallée avec succès `)
+            this.voirDetailsBatiment(this.idBatimentActif)
           } else {
             alert(`L'instance compteur n'a pas été désinstallée suite à une erreur, contactez le fournisseur !`)
           }

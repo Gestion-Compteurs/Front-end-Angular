@@ -3,14 +3,12 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AjouterInstanceCompteurDto, InstanceCompteurDto} from "../../DTOs/InstanceCompteurDto";
 import {batimentsServiceAddress, instancesCompteursServiceAddress, relevesServiceAddress} from "../../environnement";
-import transformJavaScript from "@angular-devkit/build-angular/src/tools/esbuild/javascript-transformer-worker";
 import {BatimentDto} from "../../DTOs/BatimentDto";
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstancesCompteursService {
-
   constructor(
     private http: HttpClient
   ) { }
@@ -24,6 +22,6 @@ export class InstancesCompteursService {
   }
   // Désinstaller une instance compteur
   desinstallerInstance(instanceCompteurId: number): Observable<boolean> {
-
+    return this.http.delete<boolean>(`${instancesCompteursServiceAddress}/SupprimerInstanceCompteur/${instanceCompteurId}`)
   }
 }
